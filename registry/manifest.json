@@ -1,0 +1,51 @@
+{
+  "name": "NeoBrutal Soft",
+  "package": "@neobrutal/soft",
+  "version": "0.5.0-dev",
+  "family": "NeoBrutalism",
+  "flavor": "Soft",
+  "intent": ["saas", "admin", "developer-tools", "agent-ui", "operational-ui"],
+  "themes": ["light", "dark"],
+  "interaction": {
+    "law": "compress-never-float",
+    "hover": "partial-compression",
+    "active": "full-compression",
+    "semanticLiftExceptions": ["drag-and-drop"]
+  },
+  "distribution": {
+    "css": "src/index.css",
+    "react": "packages/react/src/index.js",
+    "shadcn": "registry.json",
+    "agentGuide": "LLMS.md"
+  },
+  "quality": {
+    "target": "WCAG 2.2 AA",
+    "staticConformance": "npm run check",
+    "browserQA": "npm run test:browser",
+    "visualCapture": true
+  },
+  "componentGroups": [
+    "foundations",
+    "forms",
+    "navigation",
+    "overlays",
+    "feedback",
+    "data-tables",
+    "data-visualization",
+    "date-time",
+    "files-releases",
+    "licensing",
+    "agents-permissions",
+    "operations",
+    "customers-teams",
+    "billing-commerce",
+    "scheduling-rollouts",
+    "webhook-inspection"
+  ],
+  "nonGoals": [
+    "generic-hover-lift",
+    "decorative-dashboard-animation",
+    "raw-secret-exposure-to-agents",
+    "binary-success-error-for-partial-failure"
+  ]
+}

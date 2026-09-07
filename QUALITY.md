@@ -1,157 +1,107 @@
 # NeoBrutal Soft — Quality Gate
 
-NeoBrutal Soft is not considered sellable because it has many components. It is sellable only when the system is coherent, distinctive, reliable, and measurably useful in real products.
+NeoBrutal Soft is sellable only when it is coherent, distinctive, reliable, installable, testable, and measurably useful in real products.
 
-Every public release must pass the gates below.
+Component count is not a quality metric.
 
 ## 1. Distinctive design language
-
-- Must remain recognizably Neo-Brutalist without becoming visually exhausting.
-- Must obey **Compress, never float** for ordinary tactile controls.
-- Motion, shadows, borders, radii, typography, and color must feel like one physical system.
-- New components must reuse semantic tokens instead of inventing local values.
-- Static surfaces must not mimic interactive motion.
-- Avoid generic "dashboard theme" styling that could belong to any library.
+- Recognizably Neo-Brutalist without becoming exhausting.
+- **Compress, never float** for ordinary tactile controls.
+- Shadows, borders, radii, typography, motion, and color behave like one physical system.
+- Static surfaces do not impersonate interactive ones.
+- New components reuse semantic tokens instead of local one-off values.
 
 ## 2. Real-product value
-
-A component is accepted only when it solves a real interface problem.
-
-Preferred evidence:
-
-- used in the NeoLicenser prototype
-- used in neobrutalism.shop
-- requested by a real application workflow
-- closes a known accessibility or usability gap
-
-Do not add components solely to increase component count.
+A component should solve a real workflow, ideally dogfooded in NeoLicenser or neobrutalism.shop. Do not add components only to increase library size.
 
 ## 3. Interaction completeness
+Where applicable define rest, hover/contact, focus-visible, press, selected/toggled, loading, disabled, success/error, keyboard, touch, and reduced-motion states.
 
-Where applicable, every interactive component must define:
-
-- rest
-- hover/contact
-- focus-visible
-- press/active
-- selected/toggled
-- loading
-- disabled
-- success/error result feedback
-- keyboard behavior
-- touch behavior
-- reduced-motion behavior
-
-The interaction must communicate cause -> action -> result.
+Cause → action → result must remain understandable.
 
 ## 4. Accessibility
+Target WCAG 2.2 AA wherever applicable.
 
-- Semantic HTML first.
-- Keyboard operation must be complete.
-- Focus-visible must never be removed without a stronger replacement.
-- Touch targets must remain comfortably usable.
-- State cannot rely on color alone.
-- `prefers-reduced-motion` must preserve meaning while reducing travel/rebound.
-- Dialog-like examples must manage focus and support Escape.
-- Disabled and loading states must remain understandable to assistive technology.
+Requirements include semantic HTML first, visible focus, keyboard operation, usable touch targets, no color-only critical state, reduced-motion support, accessible dialogs, non-hover access to chart data, and file upload without requiring drag.
 
-Target: WCAG 2.2 AA for components and examples wherever applicable.
+### Automated accessibility gate
+`npm run test:browser` runs Playwright + axe scans against representative public demos on desktop and mobile Chromium.
+
+Automated scans do **not** replace manual accessibility review. They are a floor, not a certification.
 
 ## 5. Responsive quality
+- No desktop-only assumptions.
+- Use fluid `clamp()` tokens where useful.
+- Survive narrow containers, long names/URLs/keys, and translated copy.
+- Horizontal scrolling only where semantically justified, such as dense tables.
 
-- No fixed desktop-only assumptions.
-- Use fluid `clamp()` tokens where scaling benefits the layout.
-- Components must survive narrow containers, not just narrow viewports.
-- Long labels, URLs, license keys, product names, and translations must not destroy layouts.
-- Horizontal scrolling is acceptable only where semantically appropriate, such as dense data tables.
-
-## 6. Light and dark parity
-
-A component is incomplete until both themes are intentionally designed.
-
-Check:
-
-- contrast
-- border readability
-- hard-shadow readability
-- focus treatment
-- status colors
-- inset/recessed surfaces
-- disabled states
-- overlays
-
-Dark mode must not be an inverted afterthought.
+## 6. Light/dark parity
+Every public component must be intentionally designed in both themes: contrast, borders, hard shadows, focus, statuses, inset surfaces, disabled states, overlays, charts, code/inspection surfaces.
 
 ## 7. Motion quality
-
-- Press acknowledgement should feel immediate.
-- Routine interactions must not wait for decorative animation.
-- Release may rebound, but Soft should remain restrained.
-- Large layout transitions should be slower than direct-contact feedback.
-- Dragging may lift because the user is semantically picking an object up; generic hover may not.
-- Avoid `transition: all` in production components.
+- Press feedback is immediate.
+- Routine actions do not wait for decoration.
+- Soft release motion stays restrained.
+- Actual dragging may lift; generic hover may not.
+- No `transition: all` in production components.
 
 ## 8. Engineering quality
+- CSS remains framework-agnostic.
+- Component CSS is isolated and exported by `src/index.css`.
+- Public classes use `nbs-`; tokens use `--nbs-`.
+- Core rendering has no mandatory remote asset dependency.
+- Progressive enhancement is preferred over JavaScript-required basics.
 
-- Framework-agnostic CSS foundation remains usable without React.
-- Component CSS must be isolated and exported through `src/index.css`.
-- Public class names use the `nbs-` namespace.
-- Tokens use the `--nbs-` namespace.
-- Avoid hidden global dependencies.
-- Avoid remote assets required for core rendering.
-- Prefer progressive enhancement over JavaScript-required basics.
+## 9. Distribution integrity
+Commercial readiness requires more than source CSS.
 
-## 9. Agent readability
+The supported paths are:
+- canonical CSS source
+- thin React wrappers
+- shadcn source registry
+- machine-readable manifest
+- LLM/agent instructions
 
-Every significant component or pattern should be understandable by an LLM/coding agent through documentation and stable naming.
+Framework wrappers may map props/semantics to Soft classes but must not fork Soft styling.
 
-Documentation should state:
+`npm run check` validates registry source paths and required distribution files.
 
-- component intent
-- anatomy
-- valid states
-- when to use it
-- when not to use it
-- accessibility requirements
-- tactile behavior
+## 10. Agent readability
+Significant patterns must expose intent, valid states, accessibility needs, tactile behavior, and when-not-to-use guidance through stable naming/documentation/manifest data.
 
-Machine consumers should never need to infer interaction meaning from appearance alone.
+Machine consumers should not need to infer interaction meaning from appearance alone.
 
-## 10. Performance and restraint
+## 11. Operational truth
+Infrastructure UI does not hide important exceptions for visual cleanliness.
 
-- Keep the CSS foundation lightweight.
-- Do not add animation libraries for interactions achievable with CSS.
-- Avoid expensive effects as defaults.
-- Blur/backdrop effects should be limited to surfaces where hierarchy benefits.
-- Preserve layout during loading to reduce visual movement.
+- failed webhook history remains inspectable after retry
+- partial success remains partial success
+- billing shows money/timing consequences
+- schedule/release UI shows timezone and absolute timing
+- rollout UI shows population/stage/health
+- secret values are not exposed unnecessarily
 
-## 11. Demo quality
+## 12. Browser interaction gate
+Playwright smoke tests exercise representative state changes, including theme switching, saved views, table density/columns, rollout promotion, inspector tabs, and tactile contact behavior.
 
-The showcase is part of the product.
+If a browser test fails because the UI is wrong, fix the UI. Do not weaken the assertion merely to get green CI.
 
-It must:
+## 13. Visual review
+CI captures full-page light/dark screenshots of the current showcase as review artifacts.
 
-- use the actual package CSS, not duplicated fake styles
-- demonstrate real workflows
-- expose light/dark behavior
-- demonstrate tactile interaction
-- demonstrate keyboard-accessible overlays
-- show useful application compositions
-- make the value of the system obvious within seconds
+In v0.5 these are **visual captures**, not blocking pixel-diff regression baselines. Once captures are explicitly approved, a later milestone can promote them into stable regression references.
 
-## 12. Release definition
+## 14. Performance and restraint
+- Keep runtime CSS/JS small and dependency-light.
+- Do not add animation libraries for CSS-solvable interactions.
+- Limit blur/backdrop effects.
+- Avoid layout shifts during loading.
+- Add explicit CSS/performance budgets before 1.0.
 
-A component or milestone is **Done** only when:
+## 15. Demo quality
+The showcase is part of the product. It uses actual package CSS, demonstrates realistic workflows, supports light/dark, exposes tactile behavior, and must make Soft's value obvious quickly.
 
-1. visual design is coherent
-2. interactions are complete
-3. light/dark are complete
-4. keyboard/touch behavior is considered
-5. reduced motion is considered
-6. responsive behavior is tested by design
-7. documentation exists
-8. it is exported correctly
-9. it provides real product value
-10. it does not violate the family spec
+## 16. Release definition
+A milestone is **Done** only when relevant visual, interaction, theme, keyboard/touch, reduced-motion, responsive, documentation, export, distribution, and automated quality requirements pass.
 
-If one of these is missing, the component is still in development.
+If one is materially missing, the feature is still in development.

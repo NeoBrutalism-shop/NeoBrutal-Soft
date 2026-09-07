@@ -10,8 +10,14 @@
 
   .nbs-check input {
     position: absolute;
+    inset-inline-start: 0;
+    top: .08rem;
+    z-index: 1;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0;
     opacity: 0;
-    pointer-events: none;
+    cursor: pointer;
   }
 
   .nbs-check__box {
@@ -26,6 +32,7 @@
     border-radius: 5px;
     background: var(--nbs-surface);
     box-shadow: 2px 2px 0 var(--nbs-shadow);
+    pointer-events: none;
     transform: translate(0, 0);
     transition:
       transform var(--nbs-motion-fast) var(--nbs-ease-release),

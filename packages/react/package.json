@@ -1,0 +1,14 @@
+{
+  "name": "@neobrutal/soft-react",
+  "version": "0.5.0-dev",
+  "description": "Thin React primitives for NeoBrutal Soft. Styling remains owned by @neobrutal/soft CSS.",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "license": "UNLICENSED"
+}

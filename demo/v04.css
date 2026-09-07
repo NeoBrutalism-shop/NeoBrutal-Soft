@@ -27,7 +27,7 @@ body { overflow-x: hidden; }
 }
 
 .v04-brand strong { display: block; }
-.v04-brand span { display: block; color: var(--nbs-text-muted); font-size: var(--nbs-text-xs); margin-top: .1rem; }
+.v04-brand > div > span { display: block; color: var(--nbs-text-muted); font-size: var(--nbs-text-xs); margin-top: .1rem; }
 .v04-actions { justify-content: flex-end; flex-wrap: wrap; }
 .v04-main { display: grid; gap: var(--nbs-space-10); padding-block: var(--nbs-space-8) var(--nbs-space-12); }
 

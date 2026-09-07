@@ -3,6 +3,66 @@ const themeToggle = document.querySelector('#themeToggle');
 const toastRegion = document.querySelector('#toastRegion');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* v0.4 originally used labels as visual field containers around both an input and a button.
+   Normalize those containers into groups before interaction/a11y tooling runs; inputs already
+   carry explicit aria-labels, so no accessible name is lost. */
+document.querySelectorAll('label.nbs-date-field').forEach((field) => {
+  const group = document.createElement('div');
+  group.className = field.className;
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', field.querySelector('.nbs-label')?.textContent?.trim() || 'Date field');
+  while (field.firstChild) group.append(field.firstChild);
+  field.replaceWith(group);
+});
+
+/* Segmented meters were visually complete but exposed aria-label on generic divs.
+   Upgrade them to real meters before assistive technology reads the page. */
+const meterNumberWords = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5,
+  six: 6, seven: 7, eight: 8, nine: 9, ten: 10
+};
+
+function meterNumber(token) {
+  const numeric = Number(token);
+  if (Number.isFinite(numeric)) return numeric;
+  return meterNumberWords[String(token).toLowerCase()];
+}
+
+function upgradeMeter(meter) {
+  const originalLabel = meter.getAttribute('aria-label')?.trim();
+  if (!originalLabel) return;
+
+  let name = originalLabel;
+  let now;
+  let max;
+
+  const percentMatch = originalLabel.match(/^(.+?)\s+(\d+(?:\.\d+)?)\s+percent$/i);
+  const ratioMatch = originalLabel.match(/^(\w+)\s+of\s+(\w+)\s+(.+)$/i);
+
+  if (percentMatch) {
+    name = percentMatch[1];
+    now = Number(percentMatch[2]);
+    max = 100;
+  } else if (ratioMatch) {
+    now = meterNumber(ratioMatch[1]);
+    max = meterNumber(ratioMatch[2]);
+    name = ratioMatch[3];
+  }
+
+  if (!Number.isFinite(now) || !Number.isFinite(max) || max <= 0) {
+    meter.setAttribute('role', 'img');
+    return;
+  }
+
+  meter.setAttribute('role', 'meter');
+  meter.setAttribute('aria-label', name);
+  meter.setAttribute('aria-valuemin', '0');
+  meter.setAttribute('aria-valuemax', String(max));
+  meter.setAttribute('aria-valuenow', String(now));
+}
+
+document.querySelectorAll('.nbs-meter[aria-label], .nbs-seat-meter__track[aria-label]').forEach(upgradeMeter);
+
 const savedTheme = localStorage.getItem('nbs-theme');
 if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
 
@@ -96,7 +156,8 @@ function syncRange() {
   calendarDays.forEach((dayButton) => {
     const day = Number(dayButton.dataset.day);
     const boundary = day === from || day === to;
-    dayButton.setAttribute('aria-selected', String(boundary));
+    dayButton.removeAttribute('aria-selected');
+    dayButton.setAttribute('aria-pressed', String(boundary));
     if (day > from && day < to) dayButton.dataset.inRange = 'true';
     else delete dayButton.dataset.inRange;
   });
