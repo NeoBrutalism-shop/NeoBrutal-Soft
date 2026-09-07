@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>NeoBrutal Soft — Preview</title>
+  <link rel="stylesheet" href="../src/index.css" />
+  <link rel="stylesheet" href="./preview.css" />
+</head>
+<body>
+  <header class="preview-topbar">
+    <a class="preview-brand" href="#">NeoBrutal <strong>Soft</strong></a>
+    <div class="nbs-cluster">
+      <span class="nbs-badge nbs-badge--info">0.1.0-dev</span>
+      <button class="nbs-button nbs-button--sm nbs-button--quiet" id="themeToggle" type="button">Dark mode</button>
+    </div>
+  </header>
+
+  <main class="nbs-container preview-main">
+    <section class="preview-hero">
+      <span class="nbs-badge nbs-badge--primary">SOFT NEO-BRUTALISM</span>
+      <h1 class="nbs-heading nbs-heading--display">Quiet surfaces.<br />Physical feedback.</h1>
+      <p class="preview-lede nbs-muted">A tactile SaaS design system for dashboards, admin tools, licensing software, and products people use all day.</p>
+      <div class="nbs-cluster">
+        <button class="nbs-button nbs-button--primary nbs-button--lg">Create product</button>
+        <button class="nbs-button nbs-button--lg">View components</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="physics-title" class="preview-section">
+      <div class="preview-section-head">
+        <div>
+          <p class="preview-kicker">TACTILE PHYSICS</p>
+          <h2 id="physics-title" class="nbs-heading nbs-heading--2">Compress, never float.</h2>
+        </div>
+        <p class="nbs-muted preview-section-copy">Hover and press these controls. Their shadow represents physical depth, so the surface moves down as that depth collapses.</p>
+      </div>
+
+      <div class="nbs-grid">
+        <article class="nbs-card">
+          <div class="nbs-card__header">
+            <h3 class="nbs-card__title">Buttons</h3>
+            <span class="nbs-badge">3px depth</span>
+          </div>
+          <p class="nbs-muted">Soft uses shallow, controlled compression rather than exaggerated lift.</p>
+          <div class="nbs-cluster">
+            <button class="nbs-button nbs-button--primary">Primary</button>
+            <button class="nbs-button">Default</button>
+            <button class="nbs-button nbs-button--danger">Revoke</button>
+          </div>
+        </article>
+
+        <article class="nbs-card nbs-card--interactive" tabindex="0">
+          <div class="nbs-card__header">
+            <h3 class="nbs-card__title">Interactive card</h3>
+            <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> Active</span>
+          </div>
+          <p class="nbs-muted">Only actionable cards move. Informational surfaces stay stable, so motion keeps meaning.</p>
+          <strong>Touch this card →</strong>
+        </article>
+
+        <article class="nbs-card">
+          <div class="nbs-card__header">
+            <h3 class="nbs-card__title">Preferences</h3>
+            <span class="nbs-badge nbs-badge--warning">Live</span>
+          </div>
+          <label class="nbs-switch">
+            <input type="checkbox" checked />
+            <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
+            <span class="nbs-switch__label">Automatic updates</span>
+          </label>
+          <label class="nbs-switch">
+            <input type="checkbox" />
+            <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
+            <span class="nbs-switch__label">Usage telemetry</span>
+          </label>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="app-title" class="preview-section">
+      <div class="preview-section-head">
+        <div>
+          <p class="preview-kicker">FIRST REAL USE CASE</p>
+          <h2 id="app-title" class="nbs-heading nbs-heading--2">NeoLicenser product panel</h2>
+        </div>
+        <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> Connected</span>
+      </div>
+
+      <div class="preview-app nbs-card">
+        <aside class="preview-sidebar">
+          <div>
+            <div class="preview-app-brand">NL</div>
+            <p class="nbs-heading nbs-heading--3">NeoLicenser</p>
+            <p class="nbs-muted preview-small">Agent-native licensing</p>
+          </div>
+          <nav class="preview-nav" aria-label="Demo navigation">
+            <a class="preview-nav-item is-active" href="#">Overview</a>
+            <a class="preview-nav-item" href="#">Products</a>
+            <a class="preview-nav-item" href="#">Licenses</a>
+            <a class="preview-nav-item" href="#">Customers</a>
+            <a class="preview-nav-item" href="#">Integrations</a>
+            <a class="preview-nav-item" href="#">Agents</a>
+          </nav>
+        </aside>
+
+        <div class="preview-content">
+          <div class="preview-content-head">
+            <div>
+              <p class="preview-kicker">PRODUCT / RIVET PRO</p>
+              <h3 class="nbs-heading nbs-heading--2">License policy</h3>
+            </div>
+            <button class="nbs-button nbs-button--primary">Save changes</button>
+          </div>
+
+          <div class="preview-stats">
+            <div class="preview-stat nbs-inset"><span class="nbs-muted">Active licenses</span><strong>1,284</strong></div>
+            <div class="preview-stat nbs-inset"><span class="nbs-muted">Activations</span><strong>2,419</strong></div>
+            <div class="preview-stat nbs-inset"><span class="nbs-muted">Expiring soon</span><strong>63</strong></div>
+          </div>
+
+          <div class="preview-form-grid">
+            <label class="nbs-field">
+              <span class="nbs-label">License name</span>
+              <input class="nbs-input" value="Rivet Pro — Individual" />
+              <span class="nbs-help">Shown in the customer portal and API responses.</span>
+            </label>
+            <label class="nbs-field">
+              <span class="nbs-label">Activation limit</span>
+              <input class="nbs-input" type="number" value="1" />
+              <span class="nbs-help">Localhost and approved staging domains can be excluded.</span>
+            </label>
+          </div>
+
+          <div class="preview-setting nbs-card nbs-card--flat nbs-card--muted">
+            <div>
+              <strong>Updates entitlement</strong>
+              <p class="nbs-muted preview-small">Allow product updates while the license entitlement is active.</p>
+            </div>
+            <label class="nbs-switch" aria-label="Updates entitlement">
+              <input type="checkbox" checked />
+              <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./demo.js" type="module"></script>
+</body>
+</html>
