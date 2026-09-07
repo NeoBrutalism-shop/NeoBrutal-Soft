@@ -1,0 +1,121 @@
+body { overflow-x: hidden; }
+
+.preview-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nbs-space-4);
+  min-height: clamp(4.25rem, 3.8rem + 1.2vw, 5.25rem);
+  padding-inline: clamp(1rem, .6rem + 1.6vw, 2.5rem);
+  border-bottom: var(--nbs-border-width) solid var(--nbs-border);
+  background: color-mix(in srgb, var(--nbs-bg), transparent 7%);
+  backdrop-filter: blur(12px);
+}
+
+.preview-brand {
+  font-size: var(--nbs-text-lg);
+  font-weight: var(--nbs-weight-medium);
+  text-decoration: none;
+}
+
+.preview-brand strong { font-weight: var(--nbs-weight-bold); }
+.preview-main { padding-block: var(--nbs-space-10) var(--nbs-space-12); }
+
+.preview-hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--nbs-space-4);
+  max-width: 62rem;
+  padding-block: var(--nbs-space-8) var(--nbs-space-12);
+}
+
+.preview-lede {
+  max-width: 46rem;
+  margin: 0;
+  font-size: var(--nbs-text-lg);
+}
+
+.preview-section {
+  display: grid;
+  gap: var(--nbs-space-6);
+  padding-block: var(--nbs-space-8);
+  border-top: var(--nbs-border-width) solid color-mix(in srgb, var(--nbs-border), transparent 72%);
+}
+
+.preview-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--nbs-space-5);
+}
+
+.preview-section-copy { max-width: 36rem; margin: 0; }
+.preview-kicker { margin: 0 0 var(--nbs-space-2); font-family: var(--nbs-font-mono); font-size: var(--nbs-text-xs); font-weight: var(--nbs-weight-bold); letter-spacing: .08em; }
+.preview-small { margin: .2rem 0 0; font-size: var(--nbs-text-sm); }
+
+.preview-app {
+  display: grid;
+  grid-template-columns: minmax(12rem, var(--nbs-sidebar-width)) 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.preview-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nbs-space-6);
+  padding: var(--nbs-space-5);
+  border-right: var(--nbs-border-width) solid var(--nbs-border);
+  background: var(--nbs-surface-muted);
+}
+
+.preview-app-brand {
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-bottom: var(--nbs-space-3);
+  border: var(--nbs-border-width) solid var(--nbs-border);
+  border-radius: var(--nbs-radius-sm);
+  background: var(--nbs-primary);
+  box-shadow: 2px 2px 0 var(--nbs-shadow);
+  color: #111;
+  font-weight: var(--nbs-weight-bold);
+}
+
+.preview-nav { display: grid; gap: .35rem; }
+.preview-nav-item {
+  padding: .62rem .75rem;
+  border: var(--nbs-border-width) solid transparent;
+  border-radius: var(--nbs-radius-sm);
+  color: var(--nbs-text-muted);
+  font-size: var(--nbs-text-sm);
+  font-weight: var(--nbs-weight-medium);
+  text-decoration: none;
+}
+.preview-nav-item:hover { background: var(--nbs-surface); color: var(--nbs-text); }
+.preview-nav-item.is-active { border-color: var(--nbs-border); background: var(--nbs-primary); color: #111; box-shadow: 2px 2px 0 var(--nbs-shadow); }
+
+.preview-content { display: grid; gap: var(--nbs-space-5); padding: var(--nbs-space-6); min-width: 0; }
+.preview-content-head { display: flex; align-items: center; justify-content: space-between; gap: var(--nbs-space-4); }
+.preview-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--nbs-space-3); }
+.preview-stat { display: grid; gap: var(--nbs-space-1); padding: var(--nbs-space-3); }
+.preview-stat strong { font-size: var(--nbs-text-2xl); line-height: 1; }
+.preview-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--nbs-space-4); }
+.preview-setting { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--nbs-space-4); }
+
+@media (max-width: 760px) {
+  .preview-topbar { position: static; }
+  .preview-section-head,
+  .preview-content-head { align-items: flex-start; flex-direction: column; }
+  .preview-app { grid-template-columns: 1fr; }
+  .preview-sidebar { border-right: 0; border-bottom: var(--nbs-border-width) solid var(--nbs-border); }
+  .preview-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .preview-nav-item { text-align: center; }
+  .preview-stats,
+  .preview-form-grid { grid-template-columns: 1fr; }
+}
