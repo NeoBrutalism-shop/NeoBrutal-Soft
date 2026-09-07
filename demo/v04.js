@@ -3,6 +3,18 @@ const themeToggle = document.querySelector('#themeToggle');
 const toastRegion = document.querySelector('#toastRegion');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* v0.4 originally used labels as visual field containers around both an input and a button.
+   Normalize those containers into groups before interaction/a11y tooling runs; inputs already
+   carry explicit aria-labels, so no accessible name is lost. */
+document.querySelectorAll('label.nbs-date-field').forEach((field) => {
+  const group = document.createElement('div');
+  group.className = field.className;
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', field.querySelector('.nbs-label')?.textContent?.trim() || 'Date field');
+  while (field.firstChild) group.append(field.firstChild);
+  field.replaceWith(group);
+});
+
 const savedTheme = localStorage.getItem('nbs-theme');
 if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
 
@@ -96,7 +108,8 @@ function syncRange() {
   calendarDays.forEach((dayButton) => {
     const day = Number(dayButton.dataset.day);
     const boundary = day === from || day === to;
-    dayButton.setAttribute('aria-selected', String(boundary));
+    dayButton.removeAttribute('aria-selected');
+    dayButton.setAttribute('aria-pressed', String(boundary));
     if (day > from && day < to) dayButton.dataset.inRange = 'true';
     else delete dayButton.dataset.inRange;
   });
