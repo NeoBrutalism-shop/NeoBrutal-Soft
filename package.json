@@ -7,7 +7,7 @@
   "style": "src/index.css",
   "files": ["src", "packages", "registry", "registry.json", "DESIGN.md", "LLMS.md", "QUALITY.md", "COMPONENTS.md", "README.md", "llms.txt"],
   "scripts": {
-    "check": "node scripts/check.mjs && node scripts/check-registry.mjs && node --check demo/demo.js && node --check demo/v03.js && node --check demo/v04.js && node --check demo/v05.js && node --check packages/react/src/index.js",
+    "check": "node scripts/check.mjs && node scripts/check-registry.mjs && node --check showcase.js && node --check demo/demo.js && node --check demo/v03.js && node --check demo/v04.js && node --check demo/v05.js && node --check packages/react/src/index.js",
     "demo": "python3 -m http.server 4173",
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/accessibility.spec.mjs",
