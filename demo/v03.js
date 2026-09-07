@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const themeToggle = document.querySelector('#themeToggle');
 const toastStack = document.querySelector('#toastStack');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const savedTheme = localStorage.getItem('nbs-theme');
 if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
@@ -63,7 +64,11 @@ let commandIndex = 0;
 function visibleCommands() { return commandItems.filter((item) => !item.hidden); }
 function selectCommand(index) {
   const visible = visibleCommands();
-  if (!visible.length) return;
+  if (!visible.length) {
+    commandItems.forEach((item) => item.setAttribute('aria-selected', 'false'));
+    commandIndex = 0;
+    return;
+  }
   commandIndex = Math.max(0, Math.min(index, visible.length - 1));
   commandItems.forEach((item) => item.setAttribute('aria-selected', 'false'));
   visible[commandIndex].setAttribute('aria-selected', 'true');
@@ -91,21 +96,21 @@ commandTrigger.addEventListener('click', openCommand);
 commandInput.addEventListener('input', filterCommands);
 commandInput.addEventListener('keydown', (event) => {
   const visible = visibleCommands();
+  if (!visible.length) return;
   if (event.key === 'ArrowDown') { event.preventDefault(); selectCommand((commandIndex + 1) % visible.length); }
   if (event.key === 'ArrowUp') { event.preventDefault(); selectCommand((commandIndex - 1 + visible.length) % visible.length); }
   if (event.key === 'Enter') { event.preventDefault(); runCommand(visible[commandIndex]); }
 });
-commandItems.forEach((item) => item.addEventListener('click', () => runCommand(item)));
+commandItems.forEach((item) => {
+  item.addEventListener('click', () => runCommand(item));
+  item.addEventListener('mouseenter', () => {
+    const visible = visibleCommands();
+    const index = visible.indexOf(item);
+    if (index >= 0) selectCommand(index);
+  });
+});
 commandOverlay.addEventListener('click', (event) => { if (event.target === commandOverlay) closeOverlay(commandOverlay); });
 commandOverlay.addEventListener('keydown', (event) => trapTab(event, commandOverlay));
-
-document.addEventListener('keydown', (event) => {
-  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openCommand(); }
-  if (event.key === 'Escape') {
-    if (!commandOverlay.hidden) closeOverlay(commandOverlay);
-    if (!dangerOverlay.hidden) closeOverlay(dangerOverlay);
-  }
-});
 
 // Filter chips and text filtering
 const filterChips = [...document.querySelectorAll('.nbs-filter-chip')];
@@ -128,7 +133,7 @@ const selectedCount = document.querySelector('#selectedCount');
 
 function syncSelection() {
   const checked = rowChecks.filter((input) => input.checked);
-  rowChecks.forEach((input) => input.closest('tr').dataset.selected = input.checked ? 'true' : 'false');
+  rowChecks.forEach((input) => { input.closest('tr').dataset.selected = input.checked ? 'true' : 'false'; });
   selectedCount.textContent = String(checked.length);
   bulkbar.hidden = checked.length === 0;
   selectAll.checked = checked.length === rowChecks.length;
@@ -184,20 +189,30 @@ const applyAgentDiff = document.querySelector('#applyAgentDiff');
 applyAgentDiff.addEventListener('click', async () => {
   const original = applyAgentDiff.textContent;
   applyAgentDiff.disabled = true;
-  applyAgentDiff.textContent = 'Applying 1 / 4…';
   const rows = [...document.querySelectorAll('.nbs-agent-diff__row')];
+  const stepDelay = reduceMotion ? 0 : 260;
+  const settleDelay = reduceMotion ? 0 : 220;
+  applyAgentDiff.textContent = `Applying 0 / ${rows.length}…`;
   for (let i = 0; i < rows.length; i += 1) {
-    await new Promise((resolve) => window.setTimeout(resolve, 260));
+    if (stepDelay) await new Promise((resolve) => window.setTimeout(resolve, stepDelay));
     rows[i].style.opacity = '.58';
     rows[i].querySelector('.nbs-badge').textContent = 'Applied';
     applyAgentDiff.textContent = `Applying ${i + 1} / ${rows.length}…`;
   }
-  await new Promise((resolve) => window.setTimeout(resolve, 220));
+  if (settleDelay) await new Promise((resolve) => window.setTimeout(resolve, settleDelay));
   applyAgentDiff.textContent = 'Applied ✓';
   toast('Agent changes applied and verified.');
   window.setTimeout(() => {
     applyAgentDiff.disabled = false;
     applyAgentDiff.textContent = original;
     rows.forEach((row) => { row.style.opacity = ''; });
-  }, 1800);
+  }, reduceMotion ? 0 : 1800);
+});
+
+document.addEventListener('keydown', (event) => {
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openCommand(); }
+  if (event.key === 'Escape') {
+    if (!commandOverlay.hidden) closeOverlay(commandOverlay);
+    if (!dangerOverlay.hidden) closeOverlay(dangerOverlay);
+  }
 });
