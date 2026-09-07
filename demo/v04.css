@@ -97,6 +97,7 @@ body { overflow-x: hidden; }
 .v04-range-card { display: grid; gap: var(--nbs-space-4); }
 .v04-range-summary { justify-content: space-between; flex-wrap: wrap; }
 .v04-calendar-wrap { display: grid; place-items: start center; }
+#calendarGrid .nbs-calendar__day[data-day="1"] { grid-column: 2; }
 
 .v04-upload-result {
   display: grid;
