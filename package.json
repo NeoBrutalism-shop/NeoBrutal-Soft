@@ -1,15 +1,22 @@
 {
   "name": "@neobrutal/soft",
-  "version": "0.4.0-dev",
-  "description": "Soft Neo-Brutalism design system for SaaS, operational data, agent workflows, and product interfaces.",
+  "version": "0.5.0-dev",
+  "description": "Soft Neo-Brutalism design system for SaaS, operational data, agent workflows, and production application interfaces.",
   "private": false,
   "type": "module",
   "style": "src/index.css",
-  "files": ["src", "DESIGN.md", "LLMS.md", "COMPONENTS.md", "QUALITY.md", "README.md"],
+  "files": ["src", "packages", "registry", "registry.json", "DESIGN.md", "LLMS.md", "COMPONENTS.md", "QUALITY.md", "README.md"],
   "scripts": {
-    "check": "node scripts/check.mjs && node --check demo/demo.js && node --check demo/v03.js && node --check demo/v04.js",
-    "demo": "python3 -m http.server 4173"
+    "check": "node scripts/check.mjs && node --check demo/demo.js && node --check demo/v03.js && node --check demo/v04.js && node --check demo/v05.js && node --check packages/react/src/index.js",
+    "demo": "python3 -m http.server 4173",
+    "test:browser": "playwright test",
+    "test:a11y": "playwright test tests/accessibility.spec.mjs",
+    "test:smoke": "playwright test tests/smoke.spec.mjs"
   },
-  "keywords": ["neobrutalism", "design-system", "css", "saas", "ui", "dark-mode", "light-mode", "tactile-ui", "agent-ui", "admin-ui", "data-visualization", "operations-ui"],
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
+  },
+  "keywords": ["neobrutalism", "design-system", "css", "saas", "ui", "dark-mode", "light-mode", "tactile-ui", "agent-ui", "admin-ui", "data-visualization", "operations-ui", "react", "shadcn", "accessibility"],
   "license": "UNLICENSED"
 }
