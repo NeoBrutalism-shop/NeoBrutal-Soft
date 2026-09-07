@@ -1,6 +1,6 @@
 # NeoBrutal Soft — Component Matrix
 
-## Implemented in 0.3.0-dev
+## Implemented in 0.4.0-dev
 
 ### Foundations
 - Light theme
@@ -29,6 +29,7 @@
 - Badge/status
 - Switch
 - Checkbox
+- Radio/choice card
 - Tabs
 - Alert: info, success, warning, danger
 - Data table
@@ -58,6 +59,9 @@
 - Stepper
 - Skeleton
 - Empty state
+- Batch operation progress
+- Operation-step states
+- Partial-success / partial-failure summary
 
 ### Navigation and discovery
 - Search field treatment
@@ -77,6 +81,29 @@
 - Sticky data-table header
 - Domain/activation row
 - Release-channel row
+- Bar-chart grammar
+- Chart legend
+- Sparkline
+- Segmented meter
+- Webhook delivery log
+- Webhook event row
+- Saved-view interaction example
+
+### Date and time
+- Date field
+- Date input shell
+- Date-range layout
+- Calendar
+- Calendar day states: today, selected, in-range, disabled
+- Time/event row
+
+### Files and releases
+- Upload/drop zone
+- Semantic drag-lift state
+- File row
+- Release artifact card
+- Artifact checksum/hash treatment
+- Package metadata
 
 ### Product/admin patterns
 - Stat card and responsive stat grid
@@ -94,6 +121,15 @@
 - Risk levels: low, medium, high, critical
 - Destructive confirmation with impact summary and typed phrase
 
+### Customer / team patterns
+- Customer identity row
+- Avatar
+- Team/workspace card
+- Member row
+- Seat allocation meter
+- Subscription/renewal history
+- Renewal-policy choice example
+
 ### Licensing-specific patterns
 - License card
 - License metadata grid
@@ -101,6 +137,8 @@
 - Webhook row
 - Activation/domain management row
 - Release-channel status row
+- Signed release artifact
+- Renewal window
 - Agent/API risk chip: read, write, critical
 
 ## Dogfood coverage
@@ -129,31 +167,39 @@ The demos currently exercise:
 - reviewable AI change set
 - activation/domain management
 - stable/beta release channels
+- keyboard/pointer-inspectable activation chart
+- renewal date range and calendar selection
+- release ZIP upload/drop behavior
+- signed artifact metadata/checksum pattern
+- webhook delivery retry while preserving history
+- batch entitlement renewal with partial success and isolated exceptions
+- team/member/seat capacity
+- renewal-policy forecasting before save
 
 ## Next high-value components
 
 Prioritized by NeoLicenser usage rather than generic library completeness.
 
-1. Radio group behavior
-2. Date/date-range field
-3. Date picker and calendar visual language
-4. Customer identity row
-5. Webhook delivery log
-6. Agent connection card
-7. Inline validation/result pattern
-8. Upload/drop zone with semantic drag lift
-9. File/release artifact row
-10. Changelog/release-note block
-11. Chart and data-visualization language
-12. Advanced table sorting/column controls
-13. Saved filter views
-14. Batch-operation progress and partial-failure states
-15. Organization/team member patterns
-16. Seat allocation workflow
-17. Subscription/renewal history
-18. Billing/commerce handoff states
-19. Empty/loading/error variants for every application workflow
-20. Automated visual/accessibility regression tooling
+1. Advanced table sorting and column controls
+2. Saved filter-view component contract (beyond demo treatment)
+3. Changelog/release-note block
+4. Billing/commerce handoff states
+5. Invoice/payment history
+6. Customer organization hierarchy
+7. Seat invite/pending/removed states
+8. Date/time timezone selection
+9. Recurring schedule editor
+10. Chart line/area alternatives where a real use case requires them
+11. Empty/loading/error variants for every application workflow
+12. Inline validation/result pattern
+13. Agent connection card
+14. Webhook request/response inspector
+15. Retry/backoff visualization
+16. Release rollout controls and staged percentage updates
+17. Artifact provenance/signature details
+18. Automated visual regression tooling
+19. Automated accessibility regression tooling
+20. React/shadcn wrappers and registry metadata
 
 ## Conformance rule
 
@@ -174,6 +220,6 @@ A component is not considered complete until it defines, where applicable:
 - responsive behavior
 - agent-readable intent
 
-Interactive components must obey **Compress, never float** unless their semantic physical model requires a different motion (for example drag-and-drop lift).
+Interactive components must obey **Compress, never float** unless their semantic physical model requires a different motion (for example drag-and-drop lift while carrying a file).
 
 See `QUALITY.md` for the sellable-quality release gate.
