@@ -25,5 +25,9 @@
 @import "./components/file.css";
 @import "./components/operations.css";
 @import "./components/identity.css";
+@import "./components/billing.css";
+@import "./components/scheduling.css";
+@import "./components/inspector.css";
+@import "./components/data-table-pro.css";
 
 @layer nbs.tokens, nbs.base, nbs.components, nbs.utilities;
