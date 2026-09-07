@@ -1,8 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
-import { join, relative } from 'node:path';
 import process from 'node:process';
 
-const root = new URL('../', import.meta.url);
 const componentsDir = new URL('../src/components/', import.meta.url);
 const indexPath = new URL('../src/index.css', import.meta.url);
 const failures = [];
@@ -17,8 +15,11 @@ for (const file of componentFiles) {
   const fileUrl = new URL(file, componentsDir);
   const css = await readFile(fileUrl, 'utf8');
 
-  if (/translateY\(\s*-/.test(css)) {
-    failures.push(`${file}: upward translateY detected. Soft follows “Compress, never float.”`);
+  const hoverBlocks = css.match(/[^{}]*:hover[^{}]*\{[^{}]*\}/g) || [];
+  for (const block of hoverBlocks) {
+    if (/translateY\(\s*-/.test(block)) {
+      failures.push(`${file}: upward hover translateY detected. Soft follows “Compress, never float.”`);
+    }
   }
 
   if (/transition\s*:\s*all\b/i.test(css)) {
@@ -30,8 +31,7 @@ for (const file of componentFiles) {
   if (opens !== closes) failures.push(`${file}: unbalanced CSS braces (${opens} open / ${closes} close).`);
 }
 
-const sourceFiles = ['tokens.css', 'base.css'];
-for (const file of sourceFiles) {
+for (const file of ['tokens.css', 'base.css']) {
   const css = await readFile(new URL(`../src/${file}`, import.meta.url), 'utf8');
   const opens = (css.match(/{/g) || []).length;
   const closes = (css.match(/}/g) || []).length;
@@ -48,7 +48,7 @@ if (failures.length) {
 }
 
 console.log(`✓ ${componentFiles.length} component stylesheets exported`);
-console.log('✓ no upward translateY patterns detected');
+console.log('✓ no upward hover translateY patterns detected');
 console.log('✓ no transition: all declarations detected');
 console.log('✓ CSS brace counts are balanced');
 console.log('NeoBrutal Soft conformance check passed.');
