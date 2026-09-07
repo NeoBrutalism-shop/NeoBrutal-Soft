@@ -1,6 +1,6 @@
 # NeoBrutal Soft — Component Matrix
 
-## Implemented in 0.2.0-dev
+## Implemented in 0.3.0-dev
 
 ### Foundations
 - Light theme
@@ -65,6 +65,18 @@
 - Pagination
 - Segmented control
 - Tooltip surface
+- Command palette
+- Keyboard-selected command state
+- Combobox panel and option states
+
+### Data and operational workflows
+- Filter bar
+- Tactile filter chip
+- Bulk-action toolbar
+- Selectable data-table rows
+- Sticky data-table header
+- Domain/activation row
+- Release-channel row
 
 ### Product/admin patterns
 - Stat card and responsive stat grid
@@ -73,16 +85,27 @@
 - Secret/API-key field
 - Agent change-plan / approval card
 
+### Agent and permission patterns
+- Agent change/diff viewer
+- Add / modify / remove diff states
+- Agent execution progress pattern
+- Agent scope card
+- Permission matrix
+- Risk levels: low, medium, high, critical
+- Destructive confirmation with impact summary and typed phrase
+
 ### Licensing-specific patterns
 - License card
 - License metadata grid
 - Activation meter
 - Webhook row
+- Activation/domain management row
+- Release-channel status row
 - Agent/API risk chip: read, write, critical
 
 ## Dogfood coverage
 
-The interactive demo currently exercises:
+The demos currently exercise:
 
 - responsive application shell
 - product table
@@ -98,36 +121,39 @@ The interactive demo currently exercises:
 - light/dark theme switching
 - mobile sidebar behavior
 - focus restoration, Escape close, and basic dialog focus trapping
+- command palette with Cmd/Ctrl+K, filtering, arrows, Enter, and Escape
+- searchable license table
+- multi-row selection and bulk operations
+- explicit destructive confirmation
+- agent scope/risk selection
+- reviewable AI change set
+- activation/domain management
+- stable/beta release channels
 
 ## Next high-value components
 
 Prioritized by NeoLicenser usage rather than generic library completeness.
 
-1. Command palette behavior
-2. Combobox behavior
-3. Radio group
-4. Date/date-range field
-5. Filter bar
-6. Bulk-action toolbar
-7. Advanced data-table states
-8. License list row
-9. Customer identity row
-10. Release card
-11. Release-channel selector
-12. Webhook delivery log
-13. Activation/domain row
-14. Change/diff viewer
-15. Permission matrix
-16. Agent connection card
-17. Agent scope selector
-18. Destructive confirmation pattern
-19. Inline validation/result pattern
-20. Upload/drop zone
-21. File/release artifact row
-22. Changelog/release-note block
-23. Chart visual language
-24. Calendar/date-picker visual language
-25. Pagination behavior examples
+1. Radio group behavior
+2. Date/date-range field
+3. Date picker and calendar visual language
+4. Customer identity row
+5. Webhook delivery log
+6. Agent connection card
+7. Inline validation/result pattern
+8. Upload/drop zone with semantic drag lift
+9. File/release artifact row
+10. Changelog/release-note block
+11. Chart and data-visualization language
+12. Advanced table sorting/column controls
+13. Saved filter views
+14. Batch-operation progress and partial-failure states
+15. Organization/team member patterns
+16. Seat allocation workflow
+17. Subscription/renewal history
+18. Billing/commerce handoff states
+19. Empty/loading/error variants for every application workflow
+20. Automated visual/accessibility regression tooling
 
 ## Conformance rule
 
