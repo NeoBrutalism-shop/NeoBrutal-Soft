@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "neobrutal-soft",
+  "homepage": "https://github.com/NeoBrutalism-shop/NeoBrutal-Soft",
+  "items": [
+    {
+      "name": "soft-base",
+      "type": "registry:base",
+      "title": "NeoBrutal Soft Base",
+      "description": "Complete NeoBrutal Soft CSS foundation with light/dark themes, fluid tokens, tactile physics, application workflows, agent patterns, and operational UI.",
+      "config": {
+        "tsx": true,
+        "rsc": true
+      },
+      "files": [
+        { "path": "src/index.css", "type": "registry:style", "target": "styles/neobrutal-soft/index.css" },
+        { "path": "src/tokens.css", "type": "registry:style", "target": "styles/neobrutal-soft/tokens.css" },
+        { "path": "src/base.css", "type": "registry:style", "target": "styles/neobrutal-soft/base.css" },
+        { "path": "src/components/button.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/button.css" },
+        { "path": "src/components/card.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/card.css" },
+        { "path": "src/components/input.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/input.css" },
+        { "path": "src/components/badge.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/badge.css" },
+        { "path": "src/components/switch.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/switch.css" },
+        { "path": "src/components/checkbox.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/checkbox.css" },
+        { "path": "src/components/tabs.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/tabs.css" },
+        { "path": "src/components/alert.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/alert.css" },
+        { "path": "src/components/table.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/table.css" },
+        { "path": "src/components/app-shell.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/app-shell.css" },
+        { "path": "src/components/overlay.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/overlay.css" },
+        { "path": "src/components/feedback.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/feedback.css" },
+        { "path": "src/components/navigation.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/navigation.css" },
+        { "path": "src/components/product.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/product.css" },
+        { "path": "src/components/license.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/license.css" },
+        { "path": "src/components/command.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/command.css" },
+        { "path": "src/components/workflows.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/workflows.css" },
+        { "path": "src/components/permissions.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/permissions.css" },
+        { "path": "src/components/agent-diff.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/agent-diff.css" },
+        { "path": "src/components/radio.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/radio.css" },
+        { "path": "src/components/data-viz.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/data-viz.css" },
+        { "path": "src/components/date-time.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/date-time.css" },
+        { "path": "src/components/file.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/file.css" },
+        { "path": "src/components/operations.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/operations.css" },
+        { "path": "src/components/identity.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/identity.css" },
+        { "path": "src/components/billing.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/billing.css" },
+        { "path": "src/components/scheduling.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/scheduling.css" },
+        { "path": "src/components/inspector.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/inspector.css" },
+        { "path": "src/components/data-table-pro.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/data-table-pro.css" }
+      ]
+    },
+    {
+      "name": "soft-button",
+      "type": "registry:ui",
+      "title": "Soft Button",
+      "description": "Tactile NeoBrutal Soft button. Hover compresses into depth; it never floats upward.",
+      "registryDependencies": ["soft-base"],
+      "files": [
+        { "path": "registry/default/button/button.tsx", "type": "registry:ui", "target": "components/ui/soft-button.tsx" }
+      ]
+    },
+    {
+      "name": "soft-card",
+      "type": "registry:ui",
+      "title": "Soft Card",
+      "description": "NeoBrutal Soft structural card with optional interactive, muted, and flat states.",
+      "registryDependencies": ["soft-base"],
+      "files": [
+        { "path": "registry/default/card/card.tsx", "type": "registry:ui", "target": "components/ui/soft-card.tsx" }
+      ]
+    }
+  ]
+}
