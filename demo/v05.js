@@ -34,12 +34,27 @@ viewButtons.forEach((button) => button.addEventListener('click', () => {
   applyView(button.dataset.view);
 }));
 
+/* aria-sort belongs on the columnheader, not on the nested button. Normalize the
+   existing demo markup immediately, then keep the header state synchronized. */
 const sortButtons = [...document.querySelectorAll('.nbs-sort-button')];
+sortButtons.forEach((button) => {
+  const header = button.closest('th');
+  const initialDirection = button.getAttribute('aria-sort') || header?.getAttribute('aria-sort') || 'none';
+  button.removeAttribute('aria-sort');
+  header?.setAttribute('aria-sort', initialDirection);
+});
+
 sortButtons.forEach((button) => button.addEventListener('click', () => {
   const key = button.dataset.sort;
-  const direction = button.getAttribute('aria-sort') === 'ascending' ? 'descending' : 'ascending';
-  sortButtons.forEach((item) => item.setAttribute('aria-sort', 'none'));
-  button.setAttribute('aria-sort', direction);
+  const header = button.closest('th');
+  const direction = header?.getAttribute('aria-sort') === 'ascending' ? 'descending' : 'ascending';
+
+  sortButtons.forEach((item) => {
+    item.closest('th')?.setAttribute('aria-sort', 'none');
+    item.querySelector('.nbs-sort-button__mark').textContent = '↕';
+  });
+
+  header?.setAttribute('aria-sort', direction);
   button.querySelector('.nbs-sort-button__mark').textContent = direction === 'ascending' ? '↑' : '↓';
   const factor = direction === 'ascending' ? 1 : -1;
   const sorted = [...rows].sort((a, b) => String(a.dataset[key]).localeCompare(String(b.dataset[key])) * factor);
@@ -93,10 +108,24 @@ syncTimezonePreview();
 const rolloutButtons = [...document.querySelectorAll('[data-rollout]')];
 const rolloutFill = document.querySelector('#rolloutFill');
 const rolloutLabel = document.querySelector('#rolloutLabel');
+const rolloutTrack = document.querySelector('.nbs-rollout__track');
+
+/* The visual rollout track is a real progress indicator, so expose progressbar
+   semantics rather than placing aria-label on a generic div. */
+rolloutTrack?.setAttribute('role', 'progressbar');
+rolloutTrack?.setAttribute('aria-label', 'Release rollout');
+rolloutTrack?.setAttribute('aria-valuemin', '0');
+rolloutTrack?.setAttribute('aria-valuemax', '100');
+rolloutTrack?.setAttribute('aria-valuenow', '25');
+rolloutTrack?.setAttribute('aria-valuetext', '25% of eligible installs');
+
 rolloutButtons.forEach((button) => button.addEventListener('click', () => {
   const value = Number(button.dataset.rollout);
   rolloutFill.style.setProperty('--nbs-rollout-value', `${value}%`);
-  rolloutLabel.textContent = value === 0 ? 'Rollout paused' : `${value}% of eligible installs`;
+  const copy = value === 0 ? 'Rollout paused' : `${value}% of eligible installs`;
+  rolloutLabel.textContent = copy;
+  rolloutTrack?.setAttribute('aria-valuenow', String(value));
+  rolloutTrack?.setAttribute('aria-valuetext', copy);
   rolloutButtons.forEach((item) => { item.disabled = item === button; });
 }));
 
