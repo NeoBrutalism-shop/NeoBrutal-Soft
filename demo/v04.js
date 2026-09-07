@@ -38,14 +38,12 @@ function toast(message, tone = 'success') {
 
 const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, reduceMotion ? 0 : ms));
 
-// Saved views are mutually exclusive and physically latch into place.
 const viewButtons = [...document.querySelectorAll('.v04-view')];
 viewButtons.forEach((button) => button.addEventListener('click', () => {
   viewButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
   toast(`${button.textContent.trim()} view loaded.`, 'info');
 }));
 
-// Chart inspection: hover and keyboard focus expose the same information.
 const activationChart = document.querySelector('#activationChart');
 const chartBars = [...activationChart.querySelectorAll('.nbs-chart-bar')];
 let chartTooltip = null;
@@ -77,7 +75,6 @@ chartBars.forEach((bar) => {
   bar.addEventListener('blur', hideChartTooltip);
 });
 
-// Calendar range selection.
 const calendarDays = [...document.querySelectorAll('.nbs-calendar__day[data-day]')];
 const rangeStart = document.querySelector('#rangeStart');
 const rangeEnd = document.querySelector('#rangeEnd');
@@ -106,7 +103,7 @@ function syncRange() {
   rangeStart.value = formatDay(from);
   rangeEnd.value = formatDay(to);
   rangeBadge.textContent = `${days} ${days === 1 ? 'day' : 'days'} selected`;
-  renewalCount.textContent = String(110 + days * 8 - (days > 12 ? 6 : 0));
+  renewalCount.textContent = String(108 + days * 8 - (days > 12 ? 6 : 0));
 }
 
 calendarDays.forEach((button) => button.addEventListener('click', () => {
@@ -126,7 +123,6 @@ applyRange.addEventListener('click', () => {
   toast(`Renewal window applied: ${rangeStart.value} → ${rangeEnd.value}.`, 'info');
 });
 
-// Upload/drop zone. Dragging is intentionally the one semantic lift state.
 const dropzone = document.querySelector('#dropzone');
 const releaseFile = document.querySelector('#releaseFile');
 const uploadResult = document.querySelector('#uploadResult');
@@ -164,7 +160,6 @@ releaseFile.addEventListener('change', () => acceptFile(releaseFile.files?.[0]))
 }));
 dropzone.addEventListener('drop', (event) => acceptFile(event.dataTransfer?.files?.[0]));
 
-// Webhook retry makes the retry state visible instead of silently replacing the row.
 const retryFailed = document.querySelector('#retryFailed');
 const failedWebhook = document.querySelector('#failedWebhook');
 const failedWebhookStatus = document.querySelector('#failedWebhookStatus');
@@ -183,7 +178,6 @@ retryFailed.addEventListener('click', async () => {
   toast('Webhook retry succeeded. Delivery log preserved.', 'success');
 });
 
-// Batch renewal: success is not binary; individual exceptions remain visible.
 const startBatch = document.querySelector('#startBatch');
 const batchProgress = document.querySelector('#batchProgress');
 const batchMeta = document.querySelector('#batchMeta');
@@ -245,7 +239,6 @@ startBatch.addEventListener('click', async () => {
   toast('Batch completed with 2 isolated exceptions.', 'warning');
 });
 
-// Renewal policy forecasts consequences before save.
 const renewalInputs = [...document.querySelectorAll('#renewalPolicy input[name="renewal"]')];
 const renewalForecast = document.querySelector('#renewalForecast');
 const saveRenewal = document.querySelector('#saveRenewal');
