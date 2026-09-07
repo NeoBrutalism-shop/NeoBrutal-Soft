@@ -59,6 +59,10 @@
   .nbs-column-menu__title { margin: 0 0 var(--nbs-space-2); font-size: var(--nbs-text-xs); font-weight: var(--nbs-weight-bold); letter-spacing: .06em; }
   .nbs-column-menu__list { display: grid; gap: .45rem; }
 
+  /* Table layout rules can otherwise override the browser's [hidden] default. */
+  .nbs-data-table th[hidden],
+  .nbs-data-table td[hidden] { display: none; }
+
   .nbs-table-density {
     display: inline-flex;
     padding: 3px;
