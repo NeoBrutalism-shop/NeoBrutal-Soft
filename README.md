@@ -1,6 +1,6 @@
 # NeoBrutal Soft
 
-**Soft Neo-Brutalism for SaaS, dashboards, admin tools, and long-session product interfaces.**
+**Soft Neo-Brutalism for SaaS, dashboards, admin tools, agent workflows, and long-session product interfaces.**
 
 NeoBrutal Soft is a member of the NeoBrutalism design-system family. It keeps the family's tactile, structural interaction model while reducing visual aggression for dense application interfaces.
 
@@ -12,7 +12,7 @@ Interactive surfaces move **into** their shadow on hover/press. They never gener
 
 Most Neo-Brutalist UI kits are expressive but difficult to use for dense, all-day applications. Soft keeps the physical clarity—structural borders, visible depth, decisive state changes, tactile controls—while making the palette, spacing, radii, motion, and hierarchy calm enough for serious SaaS and admin software.
 
-NeoLicenser is the first dogfood application. Components are prioritized by real licensing, commerce, release, integration, and agent workflows rather than by component-count marketing.
+NeoLicenser is the first dogfood application. Components are prioritized by real licensing, commerce, release, integration, security, and agent workflows rather than by component-count marketing.
 
 ## Goals
 
@@ -24,10 +24,11 @@ NeoLicenser is the first dogfood application. Components are prioritized by real
 - Calm enough for all-day SaaS/admin use while remaining unmistakably Neo-Brutalist
 - Machine-readable conventions for humans and coding agents
 - Real application patterns beyond generic primitives
+- Risk-aware UI for agent and destructive workflows
 
 ## Status
 
-`0.2.0-dev` — application-system milestone.
+`0.3.0-dev` — advanced application-workflow milestone.
 
 Implemented coverage now includes:
 
@@ -36,10 +37,14 @@ Implemented coverage now includes:
 - dialogs, drawers, menus, popovers
 - toast, progress, stepper, skeleton, empty state
 - search, breadcrumb, pagination, segmented controls
+- command palette and combobox surfaces
+- filter bars, bulk actions, selectable operational tables
 - stat cards, integration cards, activity timeline, secret fields
-- agent change-plan/approval pattern
-- license card, activation meter, webhook row, permission-risk chips
-- interactive NeoLicenser admin prototype
+- agent change-plan, diff, scope, risk, and approval patterns
+- typed destructive confirmation with impact summary
+- license cards, activation/domain rows, activation meters, webhook rows
+- release-channel patterns
+- interactive NeoLicenser admin and advanced-workflow prototypes
 
 See [`COMPONENTS.md`](./COMPONENTS.md) for the detailed matrix and [`QUALITY.md`](./QUALITY.md) for the release gate.
 
@@ -61,11 +66,18 @@ src/
     navigation.css
     product.css
     license.css
+    command.css
+    workflows.css
+    permissions.css
+    agent-diff.css
 
 demo/
   index.html
+  v03.html
   preview.css
+  v03.css
   demo.js
+  v03.js
 
 scripts/
   check.mjs
@@ -101,6 +113,18 @@ A Soft control at rest has shallow structural depth. Hover partially compresses 
 
 Soft should feel like **coated, soft-touch hardware**: calm, precise, responsive, and physical.
 
+## Advanced workflow principle
+
+Complex actions should expose intent, risk, scope, and outcome before asking for commitment.
+
+Examples:
+
+- agent changes are reviewable as add / modify / remove operations
+- destructive actions explain impact and require stronger confirmation when risk is high
+- permissions are scoped and visible instead of hidden behind a generic admin toggle
+- bulk operations surface selection count and affected objects
+- secrets are represented as references instead of being exposed to agents
+
 ## Quality check
 
 The repository includes a zero-dependency conformance check:
@@ -109,7 +133,7 @@ The repository includes a zero-dependency conformance check:
 npm run check
 ```
 
-It currently verifies that every component stylesheet is exported, blocks upward `translateY(-…)` patterns, blocks `transition: all`, and performs a basic CSS brace sanity check.
+It verifies component exports, protects the no-hover-lift interaction law, blocks `transition: all`, and performs basic CSS structure checks.
 
 ## Family spec
 
