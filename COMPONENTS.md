@@ -1,6 +1,6 @@
 # NeoBrutal Soft — Component Matrix
 
-## Implemented in 0.1.0-dev
+## Implemented in 0.2.0-dev
 
 ### Foundations
 - Light theme
@@ -17,7 +17,7 @@
 - Raised tactile utility
 - Recessed/inset surface utility
 
-### Primitives
+### Core primitives
 - Button: default, primary, success, warning, danger, quiet
 - Button sizes: small, default, large
 - Icon button
@@ -33,40 +33,101 @@
 - Alert: info, success, warning, danger
 - Data table
 
-## Next application primitives
+### Application shell
+- App shell
+- Responsive sidebar
+- Sidebar brand and sections
+- Tactile navigation item
+- Sticky topbar
+- Responsive application content region
+- Mobile navigation trigger
 
-These are prioritized by NeoLicenser usage rather than by generic component-library completeness.
+### Overlays
+- Dialog
+- Wide dialog
+- Drawer / sheet
+- Popover surface
+- Dropdown/menu surface
+- Menu item and destructive item treatment
+- Backdrop/overlay
 
-1. App shell
-2. Sidebar navigation
-3. Topbar
-4. Dropdown menu
-5. Popover
-6. Tooltip
-7. Dialog
-8. Drawer / sheet
-9. Toast
-10. Command palette
-11. Search field
-12. Select / combobox behavior
-13. Radio group
-14. Segmented control
-15. Pagination
-16. Breadcrumb
-17. Progress / stepper
-18. Skeleton
-19. Empty state
-20. Stat card
-21. Integration card
-22. Activity / audit timeline
-23. API key / secret field
-24. Copy action feedback
-25. Webhook row
-26. License status card
-27. Activation counter
-28. Agent action preview
-29. Change/diff panel
-30. Approval card
+### Feedback and progress
+- Toast
+- Toast region
+- Progress bar
+- Stepper
+- Skeleton
+- Empty state
+
+### Navigation and discovery
+- Search field treatment
+- Breadcrumb
+- Pagination
+- Segmented control
+- Tooltip surface
+
+### Product/admin patterns
+- Stat card and responsive stat grid
+- Integration card
+- Audit/activity timeline
+- Secret/API-key field
+- Agent change-plan / approval card
+
+### Licensing-specific patterns
+- License card
+- License metadata grid
+- Activation meter
+- Webhook row
+- Agent/API risk chip: read, write, critical
+
+## Dogfood coverage
+
+The interactive demo currently exercises:
+
+- responsive application shell
+- product table
+- stat cards
+- release progress
+- integrations
+- audit trail
+- secret handling
+- dialog creation flow
+- quick-setup drawer
+- toast feedback
+- agent review/approval workflow
+- light/dark theme switching
+- mobile sidebar behavior
+- focus restoration, Escape close, and basic dialog focus trapping
+
+## Next high-value components
+
+Prioritized by NeoLicenser usage rather than generic library completeness.
+
+1. Command palette behavior
+2. Combobox behavior
+3. Radio group
+4. Date/date-range field
+5. Filter bar
+6. Bulk-action toolbar
+7. Advanced data-table states
+8. License list row
+9. Customer identity row
+10. Release card
+11. Release-channel selector
+12. Webhook delivery log
+13. Activation/domain row
+14. Change/diff viewer
+15. Permission matrix
+16. Agent connection card
+17. Agent scope selector
+18. Destructive confirmation pattern
+19. Inline validation/result pattern
+20. Upload/drop zone
+21. File/release artifact row
+22. Changelog/release-note block
+23. Chart visual language
+24. Calendar/date-picker visual language
+25. Pagination behavior examples
 
 ## Conformance rule
 
@@ -84,5 +145,9 @@ A component is not considered complete until it defines, where applicable:
 - touch behavior
 - reduced-motion behavior
 - light and dark themes
+- responsive behavior
+- agent-readable intent
 
 Interactive components must obey **Compress, never float** unless their semantic physical model requires a different motion (for example drag-and-drop lift).
+
+See `QUALITY.md` for the sellable-quality release gate.

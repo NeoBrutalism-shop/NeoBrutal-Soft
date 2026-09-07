@@ -4,150 +4,247 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>NeoBrutal Soft — Preview</title>
+  <meta name="description" content="NeoBrutal Soft application-system preview, dogfooded through a NeoLicenser admin prototype." />
+  <title>NeoBrutal Soft — NeoLicenser Prototype</title>
   <link rel="stylesheet" href="../src/index.css" />
   <link rel="stylesheet" href="./preview.css" />
 </head>
 <body>
-  <header class="preview-topbar">
-    <a class="preview-brand" href="#">NeoBrutal <strong>Soft</strong></a>
-    <div class="nbs-cluster">
-      <span class="nbs-badge nbs-badge--info">0.1.0-dev</span>
-      <button class="nbs-button nbs-button--sm nbs-button--quiet" id="themeToggle" type="button">Dark mode</button>
-    </div>
-  </header>
-
-  <main class="nbs-container preview-main">
-    <section class="preview-hero">
-      <span class="nbs-badge nbs-badge--primary">SOFT NEO-BRUTALISM</span>
-      <h1 class="nbs-heading nbs-heading--display">Quiet surfaces.<br />Physical feedback.</h1>
-      <p class="preview-lede nbs-muted">A tactile SaaS design system for dashboards, admin tools, licensing software, and products people use all day.</p>
-      <div class="nbs-cluster">
-        <button class="nbs-button nbs-button--primary nbs-button--lg">Create product</button>
-        <button class="nbs-button nbs-button--lg">View components</button>
-      </div>
-    </section>
-
-    <section aria-labelledby="physics-title" class="preview-section">
-      <div class="preview-section-head">
-        <div>
-          <p class="preview-kicker">TACTILE PHYSICS</p>
-          <h2 id="physics-title" class="nbs-heading nbs-heading--2">Compress, never float.</h2>
+  <div class="nbs-app-shell">
+    <aside class="nbs-sidebar" id="appSidebar" aria-label="Primary navigation" data-open="false">
+      <div class="nbs-sidebar__brand">
+        <div class="nbs-sidebar__mark" aria-hidden="true">NL</div>
+        <div class="nbs-sidebar__brand-copy">
+          <strong>NeoLicenser</strong>
+          <span>Agent-native licensing</span>
         </div>
-        <p class="nbs-muted preview-section-copy">Hover and press these controls. Their shadow represents physical depth, so the surface moves down as that depth collapses.</p>
       </div>
 
-      <div class="nbs-grid">
-        <article class="nbs-card">
-          <div class="nbs-card__header">
-            <h3 class="nbs-card__title">Buttons</h3>
-            <span class="nbs-badge">3px depth</span>
-          </div>
-          <p class="nbs-muted">Soft uses shallow, controlled compression rather than exaggerated lift.</p>
-          <div class="nbs-cluster">
-            <button class="nbs-button nbs-button--primary">Primary</button>
-            <button class="nbs-button">Default</button>
-            <button class="nbs-button nbs-button--danger">Revoke</button>
-          </div>
-        </article>
-
-        <article class="nbs-card nbs-card--interactive" tabindex="0">
-          <div class="nbs-card__header">
-            <h3 class="nbs-card__title">Interactive card</h3>
-            <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> Active</span>
-          </div>
-          <p class="nbs-muted">Only actionable cards move. Informational surfaces stay stable, so motion keeps meaning.</p>
-          <strong>Touch this card →</strong>
-        </article>
-
-        <article class="nbs-card">
-          <div class="nbs-card__header">
-            <h3 class="nbs-card__title">Preferences</h3>
-            <span class="nbs-badge nbs-badge--warning">Live</span>
-          </div>
-          <label class="nbs-switch">
-            <input type="checkbox" checked />
-            <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
-            <span class="nbs-switch__label">Automatic updates</span>
-          </label>
-          <label class="nbs-switch">
-            <input type="checkbox" />
-            <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
-            <span class="nbs-switch__label">Usage telemetry</span>
-          </label>
-        </article>
+      <div class="nbs-nav-section">
+        <p class="nbs-nav-section__label">Workspace</p>
+        <nav class="nbs-nav">
+          <a class="nbs-nav-item" aria-current="page" href="#overview"><span class="nbs-nav-item__icon">⌂</span>Overview</a>
+          <a class="nbs-nav-item" href="#products"><span class="nbs-nav-item__icon">□</span>Products</a>
+          <a class="nbs-nav-item" href="#licenses"><span class="nbs-nav-item__icon">◇</span>Licenses</a>
+          <a class="nbs-nav-item" href="#customers"><span class="nbs-nav-item__icon">◎</span>Customers</a>
+          <a class="nbs-nav-item" href="#releases"><span class="nbs-nav-item__icon">↑</span>Releases</a>
+        </nav>
       </div>
-    </section>
 
-    <section aria-labelledby="app-title" class="preview-section">
-      <div class="preview-section-head">
-        <div>
-          <p class="preview-kicker">FIRST REAL USE CASE</p>
-          <h2 id="app-title" class="nbs-heading nbs-heading--2">NeoLicenser product panel</h2>
+      <div class="nbs-nav-section">
+        <p class="nbs-nav-section__label">System</p>
+        <nav class="nbs-nav">
+          <a class="nbs-nav-item" href="#integrations"><span class="nbs-nav-item__icon">⊞</span>Integrations</a>
+          <a class="nbs-nav-item" href="#agents"><span class="nbs-nav-item__icon">✦</span>Agents</a>
+          <a class="nbs-nav-item" href="#settings"><span class="nbs-nav-item__icon">⚙</span>Settings</a>
+        </nav>
+      </div>
+
+      <div class="nbs-sidebar__footer">
+        <div class="preview-plan nbs-card nbs-card--flat nbs-card--muted">
+          <span class="nbs-badge nbs-badge--primary">PRO</span>
+          <strong>Development workspace</strong>
+          <span class="nbs-muted preview-xs">12,482 active licenses</span>
         </div>
-        <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> Connected</span>
+        <button class="nbs-button nbs-button--quiet" id="themeToggle" type="button">Dark mode</button>
       </div>
+    </aside>
 
-      <div class="preview-app nbs-card">
-        <aside class="preview-sidebar">
+    <main class="nbs-app-main" id="overview">
+      <header class="nbs-topbar">
+        <div class="preview-topbar-left">
+          <button class="nbs-button nbs-button--sm nbs-button--quiet nbs-mobile-nav-toggle" id="navToggle" type="button" aria-controls="appSidebar" aria-expanded="false">Menu</button>
+          <div class="nbs-topbar__title">
+            <h1>Overview</h1>
+            <p>Sunday, September 7 · System healthy</p>
+          </div>
+        </div>
+        <div class="nbs-cluster">
+          <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> API healthy</span>
+          <button class="nbs-button nbs-button--sm" id="openDrawer" type="button">Quick setup</button>
+          <button class="nbs-button nbs-button--primary nbs-button--sm" id="openDialog" type="button">Create product</button>
+        </div>
+      </header>
+
+      <div class="nbs-app-content preview-dashboard">
+        <section class="preview-page-head" aria-labelledby="welcome-title">
           <div>
-            <div class="preview-app-brand">NL</div>
-            <p class="nbs-heading nbs-heading--3">NeoLicenser</p>
-            <p class="nbs-muted preview-small">Agent-native licensing</p>
+            <span class="nbs-badge nbs-badge--info">NEOBRUTAL SOFT · 0.2 DEV</span>
+            <h2 class="nbs-heading nbs-heading--2" id="welcome-title">Licensing that feels understandable.</h2>
+            <p class="nbs-muted">This application is the design-system test bench. Every pattern below must remain calm enough for daily admin work while still feeling unmistakably tactile.</p>
           </div>
-          <nav class="preview-nav" aria-label="Demo navigation">
-            <a class="preview-nav-item is-active" href="#">Overview</a>
-            <a class="preview-nav-item" href="#">Products</a>
-            <a class="preview-nav-item" href="#">Licenses</a>
-            <a class="preview-nav-item" href="#">Customers</a>
-            <a class="preview-nav-item" href="#">Integrations</a>
-            <a class="preview-nav-item" href="#">Agents</a>
-          </nav>
-        </aside>
+          <button class="nbs-button" id="showToast" type="button">Test feedback</button>
+        </section>
 
-        <div class="preview-content">
-          <div class="preview-content-head">
-            <div>
-              <p class="preview-kicker">PRODUCT / RIVET PRO</p>
-              <h3 class="nbs-heading nbs-heading--2">License policy</h3>
+        <section aria-label="License metrics">
+          <div class="nbs-stat-grid">
+            <article class="nbs-stat-card">
+              <span class="nbs-stat-card__label">Active licenses</span>
+              <strong class="nbs-stat-card__value">12,482</strong>
+              <div class="nbs-stat-card__meta"><span>+8.4% this month</span><span class="nbs-badge nbs-badge--success">Healthy</span></div>
+            </article>
+            <article class="nbs-stat-card">
+              <span class="nbs-stat-card__label">Activations</span>
+              <strong class="nbs-stat-card__value">28,941</strong>
+              <div class="nbs-stat-card__meta"><span>2.31 / license</span><span>↗ 4.1%</span></div>
+            </article>
+            <article class="nbs-stat-card">
+              <span class="nbs-stat-card__label">Expiring in 30 days</span>
+              <strong class="nbs-stat-card__value">634</strong>
+              <div class="nbs-stat-card__meta"><span>Renewal opportunity</span><span class="nbs-badge nbs-badge--warning">Review</span></div>
+            </article>
+            <article class="nbs-stat-card">
+              <span class="nbs-stat-card__label">API response</span>
+              <strong class="nbs-stat-card__value">84ms</strong>
+              <div class="nbs-stat-card__meta"><span>p95 · 136ms</span><span class="nbs-badge nbs-badge--success">Fast</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="preview-grid-main" id="products">
+          <article class="nbs-card preview-products">
+            <div class="nbs-card__header">
+              <div>
+                <p class="preview-kicker">PRODUCTS</p>
+                <h3 class="nbs-card__title">License health</h3>
+              </div>
+              <button class="nbs-button nbs-button--sm nbs-button--quiet">View all</button>
             </div>
-            <button class="nbs-button nbs-button--primary">Save changes</button>
-          </div>
-
-          <div class="preview-stats">
-            <div class="preview-stat nbs-inset"><span class="nbs-muted">Active licenses</span><strong>1,284</strong></div>
-            <div class="preview-stat nbs-inset"><span class="nbs-muted">Activations</span><strong>2,419</strong></div>
-            <div class="preview-stat nbs-inset"><span class="nbs-muted">Expiring soon</span><strong>63</strong></div>
-          </div>
-
-          <div class="preview-form-grid">
-            <label class="nbs-field">
-              <span class="nbs-label">License name</span>
-              <input class="nbs-input" value="Rivet Pro — Individual" />
-              <span class="nbs-help">Shown in the customer portal and API responses.</span>
-            </label>
-            <label class="nbs-field">
-              <span class="nbs-label">Activation limit</span>
-              <input class="nbs-input" type="number" value="1" />
-              <span class="nbs-help">Localhost and approved staging domains can be excluded.</span>
-            </label>
-          </div>
-
-          <div class="preview-setting nbs-card nbs-card--flat nbs-card--muted">
-            <div>
-              <strong>Updates entitlement</strong>
-              <p class="nbs-muted preview-small">Allow product updates while the license entitlement is active.</p>
+            <div class="nbs-table-wrap">
+              <table class="nbs-table">
+                <thead><tr><th>Product</th><th>Status</th><th>Licenses</th><th>Renewal</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Rivet Pro</strong><br><span class="nbs-muted preview-xs">Design system</span></td><td><span class="nbs-badge nbs-badge--success">Active</span></td><td>6,240</td><td>91%</td></tr>
+                  <tr><td><strong>NeoBrutal Soft</strong><br><span class="nbs-muted preview-xs">Design system</span></td><td><span class="nbs-badge nbs-badge--info">Beta</span></td><td>1,804</td><td>—</td></tr>
+                  <tr><td><strong>ImageForge</strong><br><span class="nbs-muted preview-xs">WordPress plugin</span></td><td><span class="nbs-badge nbs-badge--success">Active</span></td><td>4,438</td><td>84%</td></tr>
+                </tbody>
+              </table>
             </div>
-            <label class="nbs-switch" aria-label="Updates entitlement">
-              <input type="checkbox" checked />
-              <span class="nbs-switch__track"><span class="nbs-switch__thumb"></span></span>
-            </label>
-          </div>
-        </div>
+          </article>
+
+          <article class="nbs-card" id="releases">
+            <div class="nbs-card__header">
+              <div>
+                <p class="preview-kicker">LATEST RELEASE</p>
+                <h3 class="nbs-card__title">Rivet Pro 2.7.0</h3>
+              </div>
+              <span class="nbs-badge nbs-badge--success">Stable</span>
+            </div>
+            <p class="nbs-muted">Distribution is healthy across the private release channel.</p>
+            <div class="preview-progress-meta"><span>Propagation</span><strong>78%</strong></div>
+            <div class="nbs-progress" style="--nbs-progress-value: 78%" role="progressbar" aria-label="Release propagation" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78"></div>
+            <div class="nbs-cluster">
+              <button class="nbs-button nbs-button--sm">Release details</button>
+              <button class="nbs-button nbs-button--sm nbs-button--quiet">Changelog</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="preview-grid-main" id="agents">
+          <article class="nbs-agent-plan">
+            <div class="nbs-agent-plan__head">
+              <div>
+                <p class="preview-kicker">AGENT PLAN</p>
+                <h3 class="nbs-heading nbs-heading--3">Configure ImageForge licensing</h3>
+                <p class="nbs-muted preview-small">NeoLicenser Agent inspected installed capabilities and prepared a safe change set.</p>
+              </div>
+              <span class="nbs-badge nbs-badge--info">4 changes</span>
+            </div>
+            <ul class="nbs-agent-plan__changes">
+              <li><span class="nbs-agent-plan__symbol">+</span><span>Create <strong>ImageForge Pro</strong> product with annual entitlement.</span></li>
+              <li><span class="nbs-agent-plan__symbol">+</span><span>Allow <strong>3 production sites</strong>; exclude localhost and approved staging.</span></li>
+              <li><span class="nbs-agent-plan__symbol">+</span><span>Map WooCommerce product <strong>#481</strong> to the license plan.</span></li>
+              <li><span class="nbs-agent-plan__symbol">+</span><span>Use <strong>Cloudflare R2</strong> for signed update packages.</span></li>
+            </ul>
+            <div class="nbs-agent-plan__footer">
+              <span class="nbs-muted preview-xs">No customers or existing licenses will be modified.</span>
+              <div class="nbs-cluster">
+                <button class="nbs-button nbs-button--sm nbs-button--quiet">Edit plan</button>
+                <button class="nbs-button nbs-button--sm nbs-button--primary" id="applyPlan">Approve & apply</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="nbs-card" id="integrations">
+            <div class="nbs-card__header">
+              <div>
+                <p class="preview-kicker">INTEGRATIONS</p>
+                <h3 class="nbs-card__title">Delivery stack</h3>
+              </div>
+              <span class="nbs-badge nbs-badge--success"><span class="nbs-status-dot"></span> 3 connected</span>
+            </div>
+            <div class="preview-stack">
+              <div class="nbs-integration-card">
+                <div class="nbs-integration-card__icon">R2</div>
+                <div class="nbs-integration-card__body"><strong>Cloudflare R2</strong><p>Private files · signed URLs</p></div>
+                <span class="nbs-badge nbs-badge--success">Connected</span>
+              </div>
+              <div class="nbs-integration-card">
+                <div class="nbs-integration-card__icon">W</div>
+                <div class="nbs-integration-card__body"><strong>WooCommerce</strong><p>Orders · renewals · refunds</p></div>
+                <span class="nbs-badge nbs-badge--success">Connected</span>
+              </div>
+              <div class="nbs-integration-card">
+                <div class="nbs-integration-card__icon">GH</div>
+                <div class="nbs-integration-card__body"><strong>GitHub</strong><p>Release pipeline · source</p></div>
+                <span class="nbs-badge nbs-badge--success">Connected</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="preview-grid-main">
+          <article class="nbs-card">
+            <div class="nbs-card__header"><div><p class="preview-kicker">API ACCESS</p><h3 class="nbs-card__title">Production key</h3></div><span class="nbs-badge">Scoped</span></div>
+            <p class="nbs-muted">Secrets are shown as references to agents; raw credentials are never exposed to the model.</p>
+            <div class="nbs-secret-field">
+              <code class="nbs-secret-field__value" id="apiKey">nl_prod_7XK9••••••••••••4QPA</code>
+              <button class="nbs-button nbs-button--sm" id="copyKey" type="button">Copy</button>
+            </div>
+          </article>
+
+          <article class="nbs-card">
+            <div class="nbs-card__header"><div><p class="preview-kicker">ACTIVITY</p><h3 class="nbs-card__title">Audit trail</h3></div><button class="nbs-button nbs-button--sm nbs-button--quiet">Open log</button></div>
+            <div class="nbs-timeline">
+              <div class="nbs-timeline__item is-success"><span class="nbs-timeline__dot"></span><div class="nbs-timeline__content"><p><strong>Rivet Pro 2.7.0</strong> published</p><span class="nbs-timeline__meta">2 minutes ago · Release agent</span></div></div>
+              <div class="nbs-timeline__item"><span class="nbs-timeline__dot"></span><div class="nbs-timeline__content"><p>License <strong>NL-RVT-••92</strong> activated</p><span class="nbs-timeline__meta">8 minutes ago · api</span></div></div>
+              <div class="nbs-timeline__item is-warning"><span class="nbs-timeline__dot"></span><div class="nbs-timeline__content"><p>Webhook retry scheduled</p><span class="nbs-timeline__meta">16 minutes ago · WooCommerce</span></div></div>
+            </div>
+          </article>
+        </section>
       </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
+  <div class="nbs-overlay" id="productDialog" hidden>
+    <section class="nbs-dialog" role="dialog" aria-modal="true" aria-labelledby="productDialogTitle" tabindex="-1">
+      <div class="nbs-dialog__header">
+        <div><p class="preview-kicker">NEW PRODUCT</p><h2 class="nbs-heading nbs-heading--2" id="productDialogTitle">Create product</h2></div>
+        <button class="nbs-button nbs-button--sm nbs-button--quiet" type="button" data-close="productDialog" aria-label="Close dialog">Close</button>
+      </div>
+      <label class="nbs-field"><span class="nbs-label">Product name</span><input class="nbs-input" id="productName" placeholder="e.g. ImageForge Pro" /></label>
+      <label class="nbs-field"><span class="nbs-label">Product type</span><select class="nbs-select"><option>WordPress plugin</option><option>WordPress theme</option><option>Design system</option><option>Desktop software</option><option>SaaS</option></select></label>
+      <div class="nbs-dialog__footer"><button class="nbs-button nbs-button--quiet" type="button" data-close="productDialog">Cancel</button><button class="nbs-button nbs-button--primary" id="createProduct" type="button">Create product</button></div>
+    </section>
+  </div>
+
+  <div class="nbs-overlay preview-drawer-overlay" id="setupDrawerOverlay" hidden>
+    <aside class="nbs-drawer" id="setupDrawer" role="dialog" aria-modal="true" aria-labelledby="setupDrawerTitle" tabindex="-1">
+      <div class="nbs-drawer__header"><p class="preview-kicker">QUICK SETUP</p><h2 class="nbs-heading nbs-heading--2" id="setupDrawerTitle">Launch checklist</h2></div>
+      <div class="nbs-drawer__body preview-stack">
+        <div class="nbs-stepper" style="--nbs-step-count: 3">
+          <div class="nbs-step is-complete"><span class="nbs-step__dot">✓</span><span>Product</span></div>
+          <div class="nbs-step is-current"><span class="nbs-step__dot">2</span><span>Policy</span></div>
+          <div class="nbs-step"><span class="nbs-step__dot">3</span><span>Test</span></div>
+        </div>
+        <div class="nbs-alert nbs-alert--info"><strong>Agent-ready setup</strong><span>Describe what you sell and NeoLicenser can prepare this configuration for approval.</span></div>
+        <label class="nbs-field"><span class="nbs-label">What are you selling?</span><textarea class="nbs-textarea" rows="5" placeholder="A premium WordPress plugin, $59/year, 3 sites, WooCommerce checkout, updates via R2..."></textarea></label>
+      </div>
+      <div class="nbs-drawer__footer nbs-cluster"><button class="nbs-button nbs-button--quiet" type="button" data-close="setupDrawerOverlay">Close</button><button class="nbs-button nbs-button--primary" id="generatePlan" type="button">Generate plan</button></div>
+    </aside>
+  </div>
+
+  <div class="nbs-toast-region" id="toastRegion" aria-live="polite" aria-atomic="false"></div>
   <script src="./demo.js" type="module"></script>
 </body>
 </html>

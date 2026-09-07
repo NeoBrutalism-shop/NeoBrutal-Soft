@@ -9,5 +9,11 @@
 @import "./components/tabs.css";
 @import "./components/alert.css";
 @import "./components/table.css";
+@import "./components/app-shell.css";
+@import "./components/overlay.css";
+@import "./components/feedback.css";
+@import "./components/navigation.css";
+@import "./components/product.css";
+@import "./components/license.css";
 
 @layer nbs.tokens, nbs.base, nbs.components, nbs.utilities;
