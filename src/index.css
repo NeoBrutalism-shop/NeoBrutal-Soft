@@ -15,5 +15,9 @@
 @import "./components/navigation.css";
 @import "./components/product.css";
 @import "./components/license.css";
+@import "./components/command.css";
+@import "./components/workflows.css";
+@import "./components/permissions.css";
+@import "./components/agent-diff.css";
 
 @layer nbs.tokens, nbs.base, nbs.components, nbs.utilities;
