@@ -8,6 +8,12 @@ NeoBrutal Soft is a member of the NeoBrutalism design-system family. It preserve
 
 Ordinary interactive surfaces move **into** their depth on hover/press. They do not generically rise toward the user. Semantic lift is reserved for actions such as actually dragging an object.
 
+## Live showcase
+
+**[Open the NeoBrutal Soft flagship →](https://neobrutalism-shop.github.io/NeoBrutal-Soft/)**
+
+The root showcase is the public product surface. It uses the actual Soft CSS source of truth and is covered by the same browser, interaction, responsive, and axe/WCAG quality gates as the engineering demos.
+
 ## Status
 
 `0.5.0-dev` — commercial-readiness milestone.
@@ -112,7 +118,7 @@ See [`QUALITY.md`](./QUALITY.md) for the sellable-quality gate and [`COMPONENTS.
 
 NeoLicenser is Soft's first real application test bench. New components are accepted because a real workflow needs them—not to inflate the component count.
 
-The default showcase is `demo/v05.html`.
+The public flagship is the repository root (`index.html`). The v0.5 engineering lab remains available at [`demo/v05.html`](./demo/v05.html) for deeper implementation testing.
 
 ## Family spec
 
