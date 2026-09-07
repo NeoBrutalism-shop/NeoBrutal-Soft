@@ -25,7 +25,8 @@ test('v0.5 commercial workflows remain interactive', async ({ page }) => {
   await expect(page.locator('#inspectorCode')).toContainText('commerce_upstream_unavailable');
 });
 
-test('tactile button contact moves into positive depth', async ({ page }) => {
+test('tactile button hover moves into positive depth', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name.startsWith('mobile'), 'Hover physics is intentionally not required on touch-first devices.');
   await page.goto('/demo/v05.html');
   const button = page.getByRole('button', { name: 'Dark mode' });
   await button.hover();
