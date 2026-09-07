@@ -12,7 +12,7 @@ Interactive surfaces move **into** their shadow on hover/press. They never gener
 
 Most Neo-Brutalist UI kits are expressive but difficult to use for dense, all-day applications. Soft keeps the physical clarity—structural borders, visible depth, decisive state changes, tactile controls—while making the palette, spacing, radii, motion, and hierarchy calm enough for serious SaaS and admin software.
 
-NeoLicenser is the first dogfood application. Components are prioritized by real licensing, commerce, release, integration, security, and agent workflows rather than by component-count marketing.
+NeoLicenser is the first dogfood application. Components are prioritized by real licensing, commerce, release, integration, security, data, time, customer, and agent workflows rather than by component-count marketing.
 
 ## Goals
 
@@ -25,10 +25,11 @@ NeoLicenser is the first dogfood application. Components are prioritized by real
 - Machine-readable conventions for humans and coding agents
 - Real application patterns beyond generic primitives
 - Risk-aware UI for agent and destructive workflows
+- Operational interfaces that expose progress, exceptions, time, provenance, and verification clearly
 
 ## Status
 
-`0.3.0-dev` — advanced application-workflow milestone.
+`0.4.0-dev` — data, time, files, and operational-status milestone.
 
 Implemented coverage now includes:
 
@@ -44,7 +45,15 @@ Implemented coverage now includes:
 - typed destructive confirmation with impact summary
 - license cards, activation/domain rows, activation meters, webhook rows
 - release-channel patterns
-- interactive NeoLicenser admin and advanced-workflow prototypes
+- radio/choice patterns
+- chart, bar, legend, sparkline, and segmented-meter language
+- date fields, date ranges, calendar and time-row patterns
+- upload/drop zone with semantic drag lift
+- file rows and signed release-artifact patterns
+- webhook delivery logs
+- batch-operation progress and partial-failure states
+- customer identity, teams, members, seats, and subscription-history patterns
+- interactive NeoLicenser v0.4 Operations Center test bench
 
 See [`COMPONENTS.md`](./COMPONENTS.md) for the detailed matrix and [`QUALITY.md`](./QUALITY.md) for the release gate.
 
@@ -60,24 +69,27 @@ src/
     card.css
     input.css
     ...
-    app-shell.css
-    overlay.css
-    feedback.css
-    navigation.css
-    product.css
-    license.css
     command.css
     workflows.css
     permissions.css
     agent-diff.css
+    radio.css
+    data-viz.css
+    date-time.css
+    file.css
+    operations.css
+    identity.css
 
 demo/
   index.html
   v03.html
+  v04.html
   preview.css
   v03.css
+  v04.css
   demo.js
   v03.js
+  v04.js
 
 scripts/
   check.mjs
@@ -125,6 +137,18 @@ Examples:
 - bulk operations surface selection count and affected objects
 - secrets are represented as references instead of being exposed to agents
 
+## Operational UI principle
+
+Infrastructure software should never hide operational truth for the sake of visual cleanliness.
+
+- charts answer specific questions and expose exact values to keyboard/pointer users
+- date ranges show explicit boundaries and affected counts
+- release artifacts show provenance, size, channel, signature/checksum state, and verification actions
+- drag-and-drop may visually lift only while the user is actually carrying a file
+- webhook retries remain in the delivery history instead of replacing the failed event
+- batch work can finish with partial success; successful items stay applied while exceptions remain inspectable
+- team and seat changes should expose capacity and renewal consequences before save
+
 ## Quality check
 
 The repository includes a zero-dependency conformance check:
@@ -133,7 +157,7 @@ The repository includes a zero-dependency conformance check:
 npm run check
 ```
 
-It verifies component exports, protects the no-hover-lift interaction law, blocks `transition: all`, and performs basic CSS structure checks.
+It verifies component exports, protects the no-hover-lift interaction law, blocks `transition: all`, performs basic CSS structure checks, and syntax-checks the interactive demo JavaScript.
 
 ## Family spec
 

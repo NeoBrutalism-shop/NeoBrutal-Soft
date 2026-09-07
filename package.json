@@ -1,15 +1,15 @@
 {
   "name": "@neobrutal/soft",
-  "version": "0.3.0-dev",
-  "description": "Soft Neo-Brutalism design system for SaaS, dashboards, agent workflows, and product interfaces.",
+  "version": "0.4.0-dev",
+  "description": "Soft Neo-Brutalism design system for SaaS, operational data, agent workflows, and product interfaces.",
   "private": false,
   "type": "module",
   "style": "src/index.css",
   "files": ["src", "DESIGN.md", "LLMS.md", "COMPONENTS.md", "QUALITY.md", "README.md"],
   "scripts": {
-    "check": "node scripts/check.mjs && node --check demo/demo.js && node --check demo/v03.js",
+    "check": "node scripts/check.mjs && node --check demo/demo.js && node --check demo/v03.js && node --check demo/v04.js",
     "demo": "python3 -m http.server 4173"
   },
-  "keywords": ["neobrutalism", "design-system", "css", "saas", "ui", "dark-mode", "light-mode", "tactile-ui", "agent-ui", "admin-ui"],
+  "keywords": ["neobrutalism", "design-system", "css", "saas", "ui", "dark-mode", "light-mode", "tactile-ui", "agent-ui", "admin-ui", "data-visualization", "operations-ui"],
   "license": "UNLICENSED"
 }
