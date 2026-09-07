@@ -1,225 +1,153 @@
 # NeoBrutal Soft — Component Matrix
 
-## Implemented in 0.4.0-dev
+## Implemented in 0.5.0-dev
 
 ### Foundations
-- Light theme
-- Dark theme
-- Fluid spacing tokens
-- Fluid typography tokens
-- Fluid control-size tokens
-- Structural border/radius tokens
-- Tactile depth tokens
-- Semantic motion/easing tokens
-- Focus-visible treatment
-- Reduced-motion support
+- Light and dark themes
+- Fluid spacing, typography, control and layout tokens
+- Structural borders/radii
+- Tactile depth + semantic motion/easing
+- Focus-visible and reduced-motion support
 - Layout utilities: container, stack, cluster, grid
-- Raised tactile utility
-- Recessed/inset surface utility
+- Raised/tactile and recessed/inset surface utilities
 
 ### Core primitives
 - Button: default, primary, success, warning, danger, quiet
-- Button sizes: small, default, large
-- Icon button
+- Button sizes: small, default, large; icon button
 - Card: default, flat, muted, accent, interactive
-- Input
-- Textarea
-- Select styling
-- Field label/help/invalid state
+- Input, textarea, select, label/help/invalid field
 - Badge/status
-- Switch
-- Checkbox
-- Radio/choice card
-- Tabs
-- Alert: info, success, warning, danger
-- Data table
+- Switch, checkbox, radio/choice card
+- Tabs, alerts, base data table
 
-### Application shell
-- App shell
-- Responsive sidebar
-- Sidebar brand and sections
-- Tactile navigation item
-- Sticky topbar
-- Responsive application content region
-- Mobile navigation trigger
-
-### Overlays
-- Dialog
-- Wide dialog
-- Drawer / sheet
-- Popover surface
-- Dropdown/menu surface
-- Menu item and destructive item treatment
+### Application shell + overlays
+- App shell, responsive sidebar, topbar, mobile navigation
+- Dialog, wide dialog, drawer/sheet
+- Popover, dropdown/menu, destructive menu treatment
 - Backdrop/overlay
 
-### Feedback and progress
-- Toast
-- Toast region
-- Progress bar
-- Stepper
-- Skeleton
-- Empty state
-- Batch operation progress
-- Operation-step states
+### Feedback + progress
+- Toast and toast region
+- Progress bar and stepper
+- Skeleton, empty state
+- Batch-operation progress
+- Operation step states
 - Partial-success / partial-failure summary
 
-### Navigation and discovery
-- Search field treatment
-- Breadcrumb
-- Pagination
-- Segmented control
-- Tooltip surface
-- Command palette
-- Keyboard-selected command state
-- Combobox panel and option states
+### Navigation + discovery
+- Search, breadcrumb, pagination, segmented control, tooltip
+- Command palette with keyboard-selected states
+- Combobox surfaces
 
-### Data and operational workflows
-- Filter bar
-- Tactile filter chip
+### Data tables + operator control
+- Filter bar and tactile filter chips
 - Bulk-action toolbar
-- Selectable data-table rows
-- Sticky data-table header
-- Domain/activation row
-- Release-channel row
+- Selectable rows and sticky headers
+- Saved-view component
+- Sortable column headers
+- Column visibility menu
+- Comfortable/compact table density
+
+### Data visualization
 - Bar-chart grammar
+- Keyboard/pointer inspectable chart bars
 - Chart legend
 - Sparkline
 - Segmented meter
-- Webhook delivery log
-- Webhook event row
-- Saved-view interaction example
 
-### Date and time
-- Date field
-- Date input shell
-- Date-range layout
-- Calendar
-- Calendar day states: today, selected, in-range, disabled
+### Date / time / scheduling
+- Date field and range layout
+- Calendar with today/selected/in-range/disabled states
 - Time/event row
+- Timezone selector/preview
+- Explicit schedule card
+- Staged release rollout control
 
-### Files and releases
-- Upload/drop zone
-- Semantic drag-lift state
+### Files + releases
+- Upload/drop zone with semantic drag lift
 - File row
-- Release artifact card
-- Artifact checksum/hash treatment
-- Package metadata
+- Signed release artifact card
+- Checksum/hash and provenance metadata
+- Release-channel status row
 
-### Product/admin patterns
-- Stat card and responsive stat grid
-- Integration card
-- Audit/activity timeline
-- Secret/API-key field
-- Agent change-plan / approval card
+### Operational status
+- Webhook delivery log and event row
+- Webhook request/response inspector
+- Request/response tabs
+- Retry history patterns
+- Batch progress and isolated exceptions
 
-### Agent and permission patterns
-- Agent change/diff viewer
-- Add / modify / remove diff states
-- Agent execution progress pattern
-- Agent scope card
-- Permission matrix
+### Billing + commerce
+- Billing summary
+- Payment-method row
+- Invoice row/history
+- Commerce handoff boundary pattern
+- Consequence-first renewal treatment
+
+### Agent + permission patterns
+- Agent plan/approval card
+- Add/modify/remove diff viewer
+- Visible agent execution progress
+- Agent scope card and permission matrix
 - Risk levels: low, medium, high, critical
 - Destructive confirmation with impact summary and typed phrase
 
-### Customer / team patterns
-- Customer identity row
-- Avatar
+### Customers / teams / licensing
+- Customer identity row and avatar
 - Team/workspace card
 - Member row
 - Seat allocation meter
 - Subscription/renewal history
-- Renewal-policy choice example
-
-### Licensing-specific patterns
-- License card
-- License metadata grid
-- Activation meter
+- License card and metadata grid
+- Activation meter/domain management row
 - Webhook row
-- Activation/domain management row
-- Release-channel status row
-- Signed release artifact
-- Renewal window
-- Agent/API risk chip: read, write, critical
+- Renewal windows and release channels
+
+### Distribution + machine consumption
+- Framework-agnostic CSS entrypoint
+- Thin React primitive package
+- shadcn source registry with `registry:base`
+- `soft-button` and `soft-card` registry items
+- Machine-readable `registry/manifest.json`
+- LLM/agent instructions
 
 ## Dogfood coverage
 
-The demos currently exercise:
+The demos now exercise:
 
-- responsive application shell
-- product table
-- stat cards
-- release progress
-- integrations
-- audit trail
-- secret handling
-- dialog creation flow
-- quick-setup drawer
-- toast feedback
-- agent review/approval workflow
-- light/dark theme switching
-- mobile sidebar behavior
-- focus restoration, Escape close, and basic dialog focus trapping
-- command palette with Cmd/Ctrl+K, filtering, arrows, Enter, and Escape
-- searchable license table
-- multi-row selection and bulk operations
-- explicit destructive confirmation
-- agent scope/risk selection
-- reviewable AI change set
-- activation/domain management
-- stable/beta release channels
-- keyboard/pointer-inspectable activation chart
-- renewal date range and calendar selection
-- release ZIP upload/drop behavior
-- signed artifact metadata/checksum pattern
-- webhook delivery retry while preserving history
-- batch entitlement renewal with partial success and isolated exceptions
-- team/member/seat capacity
-- renewal-policy forecasting before save
+- responsive application shell and overlays
+- command palette keyboard flow
+- license filtering, selection, bulk actions and destructive confirmation
+- agent scopes, reviewable diffs and execution state
+- charts, date ranges and calendar selections
+- release ZIP upload/drop and artifact verification
+- webhook retry and partial-success batch processing
+- team seats and renewal forecasting
+- advanced table saved views, sorting, density and columns
+- billing/payment history and WooCommerce handoff
+- timezone-aware scheduling and staged rollout promotion
+- webhook request/response inspection
+- CSS, React and shadcn distribution paths
 
-## Next high-value components
+The default commercial-readiness test bench is `demo/v05.html`.
 
-Prioritized by NeoLicenser usage rather than generic library completeness.
+## Next high-value work
 
-1. Advanced table sorting and column controls
-2. Saved filter-view component contract (beyond demo treatment)
-3. Changelog/release-note block
-4. Billing/commerce handoff states
-5. Invoice/payment history
-6. Customer organization hierarchy
-7. Seat invite/pending/removed states
-8. Date/time timezone selection
-9. Recurring schedule editor
-10. Chart line/area alternatives where a real use case requires them
-11. Empty/loading/error variants for every application workflow
-12. Inline validation/result pattern
-13. Agent connection card
-14. Webhook request/response inspector
-15. Retry/backoff visualization
-16. Release rollout controls and staged percentage updates
-17. Artifact provenance/signature details
-18. Automated visual regression tooling
-19. Automated accessibility regression tooling
-20. React/shadcn wrappers and registry metadata
+1. Promote approved visual captures into blocking pixel-regression baselines
+2. Expand automated accessibility coverage to interactive opened states and every public demo
+3. Add keyboard-complete production behavior packages for complex primitives (calendar/combobox/dialog), not only visual contracts
+4. Expand React wrappers for application primitives while keeping native semantics
+5. Add more shadcn registry items and generated per-item JSON output
+6. Add Storybook-equivalent or purpose-built public component documentation without bloating runtime dependencies
+7. Add RTL and localization stress tests
+8. Add forced-colors/high-contrast testing
+9. Add performance/CSS-size budgets
+10. Finalize public/free vs commercial license model before 1.0
 
 ## Conformance rule
 
-A component is not considered complete until it defines, where applicable:
+A component is not complete until relevant rest, hover/contact, focus-visible, active/press, selected/toggled, loading, disabled, success/error, keyboard, touch, reduced-motion, light/dark, responsive, and agent-readable states are designed.
 
-- rest
-- hover/contact
-- focus-visible
-- active/press
-- selected/toggled
-- loading
-- disabled
-- success/error feedback
-- keyboard behavior
-- touch behavior
-- reduced-motion behavior
-- light and dark themes
-- responsive behavior
-- agent-readable intent
+Interactive components obey **Compress, never float** unless the physical meaning requires an exception such as actual drag-and-drop lift.
 
-Interactive components must obey **Compress, never float** unless their semantic physical model requires a different motion (for example drag-and-drop lift while carrying a file).
-
-See `QUALITY.md` for the sellable-quality release gate.
+See `QUALITY.md` for the sellable-quality gate.
