@@ -7,7 +7,7 @@
   "style": "src/index.css",
   "files": ["src", "DESIGN.md", "LLMS.md", "COMPONENTS.md", "QUALITY.md", "README.md"],
   "scripts": {
-    "check": "node scripts/check.mjs",
+    "check": "node scripts/check.mjs && node --check demo/demo.js && node --check demo/v03.js",
     "demo": "python3 -m http.server 4173"
   },
   "keywords": ["neobrutalism", "design-system", "css", "saas", "ui", "dark-mode", "light-mode", "tactile-ui", "agent-ui", "admin-ui"],
