@@ -1,6 +1,6 @@
 # NeoBrutal Soft — Component Matrix
 
-## Implemented in 0.5.0-dev
+## Implemented in 0.7.0-dev
 
 ### Foundations
 - Light and dark themes
@@ -8,6 +8,9 @@
 - Structural borders/radii
 - Tactile depth + semantic motion/easing
 - Focus-visible and reduced-motion support
+- Forced-colors / high-contrast resilience
+- RTL-safe interaction geometry and direction-aware utilities
+- Long-label, identifier and localization wrapping rules
 - Layout utilities: container, stack, cluster, grid
 - Raised/tactile and recessed/inset surface utilities
 
@@ -106,10 +109,21 @@
 ### Distribution + machine consumption
 - Framework-agnostic CSS entrypoint
 - Thin React primitive package
+- Keyboard-complete React Tabs with RTL-aware navigation
 - shadcn source registry with `registry:base`
-- `soft-button` and `soft-card` registry items
+- 7 UI registry items + base
 - Machine-readable `registry/manifest.json`
 - LLM/agent instructions
+- Blocking light/dark visual reference plate
+- Source-size budgets
+
+### Public documentation + dogfood
+- Product flagship: `index.html`
+- Interactive component explorer: `components.html`
+- NeoLicenser v0.7 application lab: `demo/v07.html`
+- Component search and keyboard command palette
+- Live dialogs, drawers, toasts, tabs, drag/drop and destructive-confirmation demonstrations
+- Older v0.4/v0.5 engineering labs retained for regression coverage
 
 ## Dogfood coverage
 
@@ -128,25 +142,25 @@ The demos now exercise:
 - timezone-aware scheduling and staged rollout promotion
 - webhook request/response inspection
 - CSS, React and shadcn distribution paths
+- forced-colors, RTL and long-localization resilience
+- public component discovery and realistic NeoLicenser navigation
 
-The default commercial-readiness test bench is `demo/v05.html`.
+The public component explorer is `components.html`. The current product dogfood lab is `demo/v07.html`.
 
 ## Next high-value work
 
-1. Promote approved visual captures into blocking pixel-regression baselines
-2. Expand automated accessibility coverage to interactive opened states and every public demo
-3. Add keyboard-complete production behavior packages for complex primitives (calendar/combobox/dialog), not only visual contracts
-4. Expand React wrappers for application primitives while keeping native semantics
-5. Add more shadcn registry items and generated per-item JSON output
-6. Add Storybook-equivalent or purpose-built public component documentation without bloating runtime dependencies
-7. Add RTL and localization stress tests
-8. Add forced-colors/high-contrast testing
-9. Add performance/CSS-size budgets
-10. Finalize public/free vs commercial license model before 1.0
+1. Expand React wrappers for the application primitives proven by the v0.7 NeoLicenser lab
+2. Generate per-component registry JSON and install examples from one canonical manifest
+3. Add keyboard-complete production behavior packages for calendar/combobox/dialog rather than visual contracts only
+4. Add component-level visual baselines for the highest-risk interactive states
+5. Add real localization fixtures in Arabic/Hebrew plus long German/Japanese product copy
+6. Add application-level performance budgets and CSS-unused analysis
+7. Finalize public/free vs commercial license model before 1.0
+8. Turn NeoLicenser from a dogfood prototype into the actual application frontend
 
 ## Conformance rule
 
-A component is not complete until relevant rest, hover/contact, focus-visible, active/press, selected/toggled, loading, disabled, success/error, keyboard, touch, reduced-motion, light/dark, responsive, and agent-readable states are designed.
+A component is not complete until relevant rest, hover/contact, focus-visible, active/press, selected/toggled, loading, disabled, success/error, keyboard, touch, reduced-motion, light/dark, responsive, RTL/high-contrast resilience, and agent-readable states are designed.
 
 Interactive components obey **Compress, never float** unless the physical meaning requires an exception such as actual drag-and-drop lift.
 
