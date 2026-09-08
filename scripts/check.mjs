@@ -31,13 +31,14 @@ for (const file of componentFiles) {
   if (opens !== closes) failures.push(`${file}: unbalanced CSS braces (${opens} open / ${closes} close).`);
 }
 
-for (const file of ['tokens.css', 'base.css']) {
+for (const file of ['tokens.css', 'base.css', 'resilience.css']) {
   const css = await readFile(new URL(`../src/${file}`, import.meta.url), 'utf8');
   const opens = (css.match(/{/g) || []).length;
   const closes = (css.match(/}/g) || []).length;
   if (opens !== closes) failures.push(`src/${file}: unbalanced CSS braces (${opens} open / ${closes} close).`);
 }
 
+if (!indexCss.includes('@import "./resilience.css";')) failures.push('src/index.css must export resilience.css.');
 if (!componentFiles.length) failures.push('No component CSS files found.');
 
 if (failures.length) {
@@ -48,6 +49,7 @@ if (failures.length) {
 }
 
 console.log(`✓ ${componentFiles.length} component stylesheets exported`);
+console.log('✓ resilience layer exported');
 console.log('✓ no upward hover translateY patterns detected');
 console.log('✓ no transition: all declarations detected');
 console.log('✓ CSS brace counts are balanced');

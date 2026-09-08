@@ -29,5 +29,6 @@
 @import "./components/scheduling.css";
 @import "./components/inspector.css";
 @import "./components/data-table-pro.css";
+@import "./resilience.css";
 
 @layer nbs.tokens, nbs.base, nbs.components, nbs.utilities;

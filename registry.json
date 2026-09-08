@@ -1,21 +1,19 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "neobrutal-soft",
-  "homepage": "https://github.com/NeoBrutalism-shop/NeoBrutal-Soft",
+  "homepage": "https://neobrutalism-shop.github.io/NeoBrutal-Soft/",
   "items": [
     {
       "name": "soft-base",
       "type": "registry:base",
       "title": "NeoBrutal Soft Base",
-      "description": "Complete NeoBrutal Soft CSS foundation with light/dark themes, fluid tokens, tactile physics, application workflows, agent patterns, and operational UI.",
-      "config": {
-        "tsx": true,
-        "rsc": true
-      },
+      "description": "Complete NeoBrutal Soft CSS foundation with light/dark themes, fluid tokens, tactile physics, resilience rules, application workflows, agent patterns, and operational UI.",
+      "config": { "tsx": true, "rsc": true },
       "files": [
         { "path": "src/index.css", "type": "registry:style", "target": "styles/neobrutal-soft/index.css" },
         { "path": "src/tokens.css", "type": "registry:style", "target": "styles/neobrutal-soft/tokens.css" },
         { "path": "src/base.css", "type": "registry:style", "target": "styles/neobrutal-soft/base.css" },
+        { "path": "src/resilience.css", "type": "registry:style", "target": "styles/neobrutal-soft/resilience.css" },
         { "path": "src/components/button.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/button.css" },
         { "path": "src/components/card.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/card.css" },
         { "path": "src/components/input.css", "type": "registry:style", "target": "styles/neobrutal-soft/components/input.css" },
@@ -53,9 +51,7 @@
       "title": "Soft Button",
       "description": "Tactile NeoBrutal Soft button. Hover compresses into depth; it never floats upward.",
       "registryDependencies": ["soft-base"],
-      "files": [
-        { "path": "registry/default/button/button.tsx", "type": "registry:ui", "target": "components/ui/soft-button.tsx" }
-      ]
+      "files": [{ "path": "registry/default/button/button.tsx", "type": "registry:ui", "target": "components/ui/soft-button.tsx" }]
     },
     {
       "name": "soft-card",
@@ -63,9 +59,47 @@
       "title": "Soft Card",
       "description": "NeoBrutal Soft structural card with optional interactive, muted, and flat states.",
       "registryDependencies": ["soft-base"],
-      "files": [
-        { "path": "registry/default/card/card.tsx", "type": "registry:ui", "target": "components/ui/soft-card.tsx" }
-      ]
+      "files": [{ "path": "registry/default/card/card.tsx", "type": "registry:ui", "target": "components/ui/soft-card.tsx" }]
+    },
+    {
+      "name": "soft-field",
+      "type": "registry:ui",
+      "title": "Soft Field",
+      "description": "Input, textarea, select, label, help, and invalid-state primitives backed by the canonical Soft field styles.",
+      "registryDependencies": ["soft-base"],
+      "files": [{ "path": "registry/default/field/field.tsx", "type": "registry:ui", "target": "components/ui/soft-field.tsx" }]
+    },
+    {
+      "name": "soft-badge",
+      "type": "registry:ui",
+      "title": "Soft Badge",
+      "description": "Semantic compact state badge with Soft status tones.",
+      "registryDependencies": ["soft-base"],
+      "files": [{ "path": "registry/default/badge/badge.tsx", "type": "registry:ui", "target": "components/ui/soft-badge.tsx" }]
+    },
+    {
+      "name": "soft-alert",
+      "type": "registry:ui",
+      "title": "Soft Alert",
+      "description": "Operational message surface with semantic info, success, warning, and danger tones.",
+      "registryDependencies": ["soft-base"],
+      "files": [{ "path": "registry/default/alert/alert.tsx", "type": "registry:ui", "target": "components/ui/soft-alert.tsx" }]
+    },
+    {
+      "name": "soft-switch",
+      "type": "registry:ui",
+      "title": "Soft Switch",
+      "description": "Native checkbox-backed switch with tactile press behavior and direction-safe thumb travel.",
+      "registryDependencies": ["soft-base"],
+      "files": [{ "path": "registry/default/switch/switch.tsx", "type": "registry:ui", "target": "components/ui/soft-switch.tsx" }]
+    },
+    {
+      "name": "soft-tabs",
+      "type": "registry:ui",
+      "title": "Soft Tabs",
+      "description": "Controlled or uncontrolled tabs with Home/End, arrow-key navigation, vertical orientation, and RTL-aware keyboard behavior.",
+      "registryDependencies": ["soft-base"],
+      "files": [{ "path": "registry/default/tabs/tabs.tsx", "type": "registry:ui", "target": "components/ui/soft-tabs.tsx" }]
     }
   ]
 }

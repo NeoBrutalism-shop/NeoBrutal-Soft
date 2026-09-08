@@ -16,9 +16,9 @@ The root showcase is the public product surface. It uses the actual Soft CSS sou
 
 ## Status
 
-`0.5.0-dev` — commercial-readiness milestone.
+`0.6.0-dev` — refinement / release-candidate-readiness milestone.
 
-Soft is still pre-1.0, but it now includes the infrastructure required to evaluate it like a product rather than a component experiment.
+v0.6 intentionally shifts from component-count growth to resilience, distribution quality, and regression protection.
 
 ## What exists
 
@@ -27,6 +27,9 @@ Soft is still pre-1.0, but it now includes the infrastructure required to evalua
 - fluid `clamp()` type, spacing, controls, and layout
 - semantic depth and motion tokens
 - visible focus treatment and reduced-motion behavior
+- forced-colors and increased-contrast support
+- RTL-safe utilities and direction-aware icons
+- long localization / identifier wrapping rules
 - framework-agnostic CSS source
 
 ### Application UI
@@ -49,10 +52,11 @@ Soft is still pre-1.0, but it now includes the infrastructure required to evalua
 
 ### Distribution
 - canonical CSS: `src/index.css`
-- thin React primitives: `packages/react`
+- React primitives + keyboard-complete tabs: `packages/react`
 - shadcn source registry: `registry.json`
 - machine-readable system manifest: `registry/manifest.json`
 - agent instructions: `LLMS.md`
+- resilience contract: `RESILIENCE.md`
 
 ## Quick use
 
@@ -72,20 +76,30 @@ or `dark`.
 React wrappers intentionally remain thin:
 
 ```js
-import { Button, Card, Field, Input } from '@neobrutal/soft-react'
+import { Button, Card, Field, Input, Switch, Tabs, TabList, Tab, TabPanel } from '@neobrutal/soft-react'
 ```
 
 The CSS layer remains the source of truth; framework wrappers must not fork the visual system.
 
 ## shadcn registry
 
-The root `registry.json` is a source registry. `soft-base` installs the complete Soft CSS contract and UI items such as `soft-button` and `soft-card` depend on that base.
+The root `registry.json` is a source registry. `soft-base` installs the complete Soft CSS contract before UI items.
 
-This prevents an installer or coding agent from copying a visually similar primitive without the tokens, themes, focus rules, and tactile physics that define Soft.
+v0.6 registry items:
+
+- `soft-button`
+- `soft-card`
+- `soft-field`
+- `soft-badge`
+- `soft-alert`
+- `soft-switch`
+- `soft-tabs`
+
+This prevents installers and coding agents from copying a visually similar primitive without the tokens, themes, focus rules, resilience layer, and tactile physics that define Soft.
 
 ## Quality
 
-Static conformance:
+Static conformance + source budgets:
 
 ```bash
 npm run check
@@ -97,11 +111,15 @@ Browser QA:
 npm run test:browser
 ```
 
-v0.5 browser QA uses Playwright + axe to exercise desktop/mobile Chromium, run WCAG-oriented automated checks, verify key interactions, and attach light/dark full-page captures for review.
+Blocking visual reference plate:
 
-Visual captures are **review artifacts**, not yet blocking pixel-diff baselines. Approved baselines can become regression gates in a later milestone.
+```bash
+npm run test:visual
+```
 
-See [`QUALITY.md`](./QUALITY.md) for the sellable-quality gate and [`COMPONENTS.md`](./COMPONENTS.md) for the component matrix.
+v0.6 QA includes desktop/mobile Chromium, axe/WCAG scans, forced-colors checks, RTL + localization overflow checks, source-size budgets, blocking light/dark reference screenshots, and full-page review captures.
+
+See [`QUALITY.md`](./QUALITY.md), [`RESILIENCE.md`](./RESILIENCE.md), and [`COMPONENTS.md`](./COMPONENTS.md).
 
 ## Product principles
 
@@ -113,6 +131,7 @@ See [`QUALITY.md`](./QUALITY.md) for the sellable-quality gate and [`COMPONENTS.
 - Billing/seat/release changes show consequence before commitment.
 - Agent interfaces expose reviewable changes rather than mysterious “AI did it” actions.
 - Raw secrets are never required for an agent to understand configured state.
+- LTR, light mode, and normal contrast are environments—not assumptions.
 
 ## Dogfood
 

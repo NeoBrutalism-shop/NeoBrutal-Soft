@@ -1,7 +1,7 @@
 {
   "name": "NeoBrutal Soft",
   "package": "@neobrutal/soft",
-  "version": "0.5.0-dev",
+  "version": "0.6.0-dev",
   "family": "NeoBrutalism",
   "flavor": "Soft",
   "intent": ["saas", "admin", "developer-tools", "agent-ui", "operational-ui"],
@@ -12,18 +12,36 @@
     "active": "full-compression",
     "semanticLiftExceptions": ["drag-and-drop"]
   },
+  "resilience": {
+    "forcedColors": true,
+    "prefersContrastMore": true,
+    "rtl": true,
+    "longStringWrapping": true,
+    "directionalIconUtility": ".nbs-icon--directional",
+    "bidiIsolationUtilities": [".nbs-bidi-isolate", ".nbs-bidi-plaintext"]
+  },
   "distribution": {
     "css": "src/index.css",
     "react": "packages/react/src/index.js",
     "shadcn": "registry.json",
-    "agentGuide": "LLMS.md"
+    "agentGuide": "LLMS.md",
+    "resilienceGuide": "RESILIENCE.md"
   },
   "quality": {
     "target": "WCAG 2.2 AA",
     "staticConformance": "npm run check",
     "browserQA": "npm run test:browser",
-    "visualCapture": true
+    "visualCapture": true,
+    "blockingVisualRegression": "tests/visual-regression.spec.mjs",
+    "performanceBudget": "npm run check:budget",
+    "rtlAndLocalizationQA": "tests/resilience.spec.mjs"
   },
+  "react": {
+    "thinWrappers": true,
+    "keyboardCompleteComposites": ["tabs"],
+    "primitives": ["button", "card", "badge", "alert", "input", "textarea", "select", "checkbox", "switch", "radio", "field", "tabs"]
+  },
+  "registryItems": ["soft-base", "soft-button", "soft-card", "soft-field", "soft-badge", "soft-alert", "soft-switch", "soft-tabs"],
   "componentGroups": [
     "foundations",
     "forms",
@@ -46,6 +64,8 @@
     "generic-hover-lift",
     "decorative-dashboard-animation",
     "raw-secret-exposure-to-agents",
-    "binary-success-error-for-partial-failure"
+    "binary-success-error-for-partial-failure",
+    "ltr-only-layout-assumptions",
+    "color-only-high-contrast-state"
   ]
 }
