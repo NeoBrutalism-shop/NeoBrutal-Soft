@@ -1,6 +1,6 @@
 # NeoBrutal Soft — Quality Gate
 
-NeoBrutal Soft is sellable only when it is coherent, distinctive, reliable, installable, testable, and measurably useful in real products.
+NeoBrutal Soft is sellable only when it is coherent, distinctive, reliable, installable, testable, resilient, and measurably useful in real products.
 
 Component count is not a quality metric.
 
@@ -19,21 +19,25 @@ Where applicable define rest, hover/contact, focus-visible, press, selected/togg
 
 Cause → action → result must remain understandable.
 
-## 4. Accessibility
+## 4. Accessibility + resilience
 Target WCAG 2.2 AA wherever applicable.
 
-Requirements include semantic HTML first, visible focus, keyboard operation, usable touch targets, no color-only critical state, reduced-motion support, accessible dialogs, non-hover access to chart data, and file upload without requiring drag.
+Requirements include semantic HTML first, visible focus, keyboard operation, usable touch targets, no color-only critical state, reduced-motion support, accessible dialogs, non-hover access to chart data, file upload without requiring drag, forced-colors support, RTL-safe geometry, and tolerance for long translated content.
 
 ### Automated accessibility gate
-`npm run test:browser` runs Playwright + axe scans against representative public demos on desktop and mobile Chromium.
+`npm run test:browser` runs Playwright + axe scans against representative public demos on desktop and mobile Chromium plus dedicated resilience fixtures.
 
 Automated scans do **not** replace manual accessibility review. They are a floor, not a certification.
 
-## 5. Responsive quality
+See [`RESILIENCE.md`](./RESILIENCE.md) for the production-environment contract.
+
+## 5. Responsive + localization quality
 - No desktop-only assumptions.
 - Use fluid `clamp()` tokens where useful.
 - Survive narrow containers, long names/URLs/keys, and translated copy.
 - Horizontal scrolling only where semantically justified, such as dense tables.
+- Direction-sensitive geometry uses logical properties.
+- Directional icons mirror intentionally; universal icons do not.
 
 ## 6. Light/dark parity
 Every public component must be intentionally designed in both themes: contrast, borders, hard shadows, focus, statuses, inset surfaces, disabled states, overlays, charts, code/inspection surfaces.
@@ -61,13 +65,14 @@ The supported paths are:
 - shadcn source registry
 - machine-readable manifest
 - LLM/agent instructions
+- resilience contract
 
 Framework wrappers may map props/semantics to Soft classes but must not fork Soft styling.
 
-`npm run check` validates registry source paths and required distribution files.
+`npm run check` validates registry source paths, required distribution files, JavaScript syntax, family interaction rules, and source-size budgets.
 
 ## 10. Agent readability
-Significant patterns must expose intent, valid states, accessibility needs, tactile behavior, and when-not-to-use guidance through stable naming/documentation/manifest data.
+Significant patterns must expose intent, valid states, accessibility needs, tactile behavior, resilience requirements, and when-not-to-use guidance through stable naming/documentation/manifest data.
 
 Machine consumers should not need to infer interaction meaning from appearance alone.
 
@@ -82,26 +87,31 @@ Infrastructure UI does not hide important exceptions for visual cleanliness.
 - secret values are not exposed unnecessarily
 
 ## 12. Browser interaction gate
-Playwright smoke tests exercise representative state changes, including theme switching, saved views, table density/columns, rollout promotion, inspector tabs, and tactile contact behavior.
+Playwright smoke tests exercise representative state changes, including theme switching, saved views, table density/columns, rollout promotion, inspector tabs, tactile contact behavior, RTL/localization resilience, and forced-colors rendering behavior.
 
 If a browser test fails because the UI is wrong, fix the UI. Do not weaken the assertion merely to get green CI.
 
-## 13. Visual review
-CI captures full-page light/dark screenshots of the current showcase as review artifacts.
+## 13. Visual regression + review
+v0.6 separates two kinds of visual QA:
 
-In v0.5 these are **visual captures**, not blocking pixel-diff regression baselines. Once captures are explicitly approved, a later milestone can promote them into stable regression references.
+1. **Blocking reference plate** — a small deterministic light/dark component plate checked with Playwright screenshot comparison.
+2. **Full-page review captures** — flagship and application screenshots attached to CI for human review.
 
-## 14. Performance and restraint
+Do not update a blocking baseline merely to clear CI. Classify the change as intentional, rendering noise, or accidental drift first.
+
+## 14. Performance budgets
+`npm run check:budget` enforces source-level limits for total CSS, the React wrapper package, registry metadata, and the largest component stylesheet.
+
 - Keep runtime CSS/JS small and dependency-light.
 - Do not add animation libraries for CSS-solvable interactions.
 - Limit blur/backdrop effects.
 - Avoid layout shifts during loading.
-- Add explicit CSS/performance budgets before 1.0.
+- Prefer splitting or simplifying code before raising a budget.
 
 ## 15. Demo quality
 The showcase is part of the product. It uses actual package CSS, demonstrates realistic workflows, supports light/dark, exposes tactile behavior, and must make Soft's value obvious quickly.
 
 ## 16. Release definition
-A milestone is **Done** only when relevant visual, interaction, theme, keyboard/touch, reduced-motion, responsive, documentation, export, distribution, and automated quality requirements pass.
+A milestone is **Done** only when relevant visual, interaction, theme, keyboard/touch, reduced-motion, forced-colors, RTL/localization, responsive, documentation, export, distribution, performance-budget, and automated quality requirements pass.
 
 If one is materially missing, the feature is still in development.
