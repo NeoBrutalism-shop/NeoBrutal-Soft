@@ -32,7 +32,7 @@
   .nbs-switch__thumb {
     position: absolute;
     top: 50%;
-    left: 3px;
+    inset-inline-start: 3px;
     width: 1.15rem;
     height: 1.15rem;
     border: 2px solid var(--nbs-border);
@@ -40,7 +40,7 @@
     background: var(--nbs-surface);
     transform: translateY(-50%);
     transition:
-      left var(--nbs-motion-standard) var(--nbs-ease-standard),
+      inset-inline-start var(--nbs-motion-standard) var(--nbs-ease-standard),
       background-color var(--nbs-motion-standard) var(--nbs-ease-standard);
   }
 
@@ -49,7 +49,7 @@
   }
 
   .nbs-switch input:checked + .nbs-switch__track .nbs-switch__thumb {
-    left: calc(100% - 1.15rem - 3px);
+    inset-inline-start: calc(100% - 1.15rem - 3px);
     background: #fffdf8;
   }
 
