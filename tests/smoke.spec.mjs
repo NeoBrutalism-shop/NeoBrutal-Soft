@@ -1,5 +1,14 @@
 import { test, expect } from '@playwright/test';
 
+async function openV07View(page, name) {
+  const mobileNav = page.locator('#mobileNav');
+  if (await mobileNav.isVisible()) {
+    await mobileNav.click();
+    await expect(page.locator('#sidebar')).toHaveAttribute('data-open', 'true');
+  }
+  await page.getByRole('button', { name }).click();
+}
+
 test('showcase flagship interactions remain functional', async ({ page }) => {
   await page.goto('/');
 
@@ -91,18 +100,18 @@ test('v0.7 component explorer is searchable and keyboard interactive', async ({ 
 test('v0.7 NeoLicenser lab exercises real application workflows', async ({ page }) => {
   await page.goto('/demo/v07.html');
 
-  await page.getByRole('button', { name: 'Licenses' }).click();
+  await openV07View(page, 'Licenses');
   await expect(page.locator('#pageTitle')).toHaveText('Licenses');
   await page.locator('#licenseSearch').fill('Pixel Harbor');
   await expect(page.locator('[data-license*="pixel"]')).toBeVisible();
   await expect(page.locator('[data-license*="apex"]')).toBeHidden();
 
-  await page.getByRole('button', { name: 'Releases' }).click();
+  await openV07View(page, 'Releases');
   await page.getByRole('button', { name: 'Promote to 50%' }).click();
   await expect(page.locator('#rolloutLabel')).toHaveText('50% of eligible installs');
   await expect(page.locator('#rolloutProgress')).toHaveAttribute('aria-valuenow', '50');
 
-  await page.getByRole('button', { name: 'Agents' }).click();
+  await openV07View(page, 'Agents');
   await page.locator('#approveAgent').click();
   await expect(page.locator('#agentPlanStatus')).toContainText(/applied|Applying/);
 });
