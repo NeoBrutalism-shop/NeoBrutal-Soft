@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soft resilience fixture</title>
+  <link rel="stylesheet" href="../../src/index.css" />
+  <style>
+    body { padding: var(--nbs-space-4); }
+    main { width: min(100%, 52rem); margin-inline: auto; }
+    .fixture-row { display:flex; flex-wrap:wrap; gap:var(--nbs-space-3); align-items:center; }
+    .fixture-grid { display:grid; gap:var(--nbs-space-4); grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr)); }
+  </style>
+</head>
+<body>
+  <main class="nbs-stack">
+    <h1 class="nbs-heading nbs-heading--1">Resilience reference</h1>
+    <section class="nbs-card nbs-stack" aria-labelledby="longTitle">
+      <h2 class="nbs-heading nbs-heading--3" id="longTitle">Localization and unbroken identifiers</h2>
+      <p>Dieser Arbeitsbereich verwendet besonders ausführliche Beschriftungen, damit Schaltflächen und Statusinformationen auch bei längeren Übersetzungen stabil bleiben.</p>
+      <div class="fixture-row">
+        <button class="nbs-button nbs-button--primary" type="button">Änderungen überprüfen und anschließend sicher veröffentlichen</button>
+        <span class="nbs-badge nbs-badge--warning">Überprüfung erforderlich</span>
+      </div>
+      <code data-nbs-identifier>release_01J6KJ4YV9YQX8E6PV73N45G0N_extremely_long_customer_generated_identifier_without_safe_breakpoints</code>
+    </section>
+
+    <section class="nbs-card nbs-stack" dir="rtl" lang="ar" aria-labelledby="rtlTitle">
+      <h2 class="nbs-heading nbs-heading--3" id="rtlTitle">واجهة من اليمين إلى اليسار</h2>
+      <p>يجب أن تبقى حالة الترخيص والإجراءات واضحة وقابلة للقراءة حتى مع النصوص الطويلة واتجاه الكتابة من اليمين إلى اليسار.</p>
+      <div class="fixture-row">
+        <button class="nbs-button nbs-button--primary" type="button"><span class="nbs-icon--directional" aria-hidden="true">→</span> متابعة إعداد الترخيص</button>
+        <span class="nbs-badge nbs-badge--success">نشط</span>
+      </div>
+      <label class="nbs-field"><span class="nbs-label">اسم مساحة العمل</span><input class="nbs-input" value="مختبرات نورث ستار للبرمجيات" /></label>
+    </section>
+
+    <section class="fixture-grid" aria-label="Forced color controls">
+      <article class="nbs-card nbs-stack"><strong>Controls</strong><button class="nbs-button nbs-button--primary" id="forcedPrimary" type="button">Primary action</button><button class="nbs-button" type="button">Secondary action</button></article>
+      <article class="nbs-card nbs-stack"><strong>State</strong><div class="fixture-row"><span class="nbs-badge nbs-badge--success">Healthy</span><span class="nbs-badge nbs-badge--danger">Failed</span></div><div class="nbs-alert nbs-alert--info"><strong>Release staged</strong><span>25% of eligible installs.</span></div></article>
+    </section>
+  </main>
+</body>
+</html>
