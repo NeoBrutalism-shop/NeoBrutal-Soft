@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soft visual reference</title>
+  <link rel="stylesheet" href="../../src/index.css" />
+  <style>
+    body { padding: 32px; }
+    main { width: 760px; max-width: 100%; margin-inline: auto; }
+    .plate { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    @media (max-width: 700px) { .plate { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main class="nbs-stack" data-testid="reference-plate">
+    <header class="nbs-stack">
+      <span class="nbs-badge nbs-badge--info">SOFT · VISUAL CONTRACT</span>
+      <h1 class="nbs-heading nbs-heading--1">Quiet structure. Physical response.</h1>
+      <p class="nbs-muted">A deterministic reference plate for the core Soft visual grammar.</p>
+    </header>
+    <div class="plate">
+      <section class="nbs-card nbs-stack">
+        <strong>Controls</strong>
+        <div class="row"><button class="nbs-button nbs-button--primary">Primary</button><button class="nbs-button">Secondary</button></div>
+        <label class="nbs-field"><span class="nbs-label">Workspace</span><input class="nbs-input" value="Northstar Labs" /></label>
+        <label class="nbs-check"><input type="checkbox" checked /><span class="nbs-check__box"></span><span class="nbs-check__label">Auto-renew</span></label>
+      </section>
+      <section class="nbs-card nbs-stack">
+        <strong>State</strong>
+        <div class="row"><span class="nbs-badge nbs-badge--success">Healthy</span><span class="nbs-badge nbs-badge--warning">Review</span><span class="nbs-badge nbs-badge--danger">Failed</span></div>
+        <div class="nbs-alert nbs-alert--info"><strong>Release staged</strong><span>25% of eligible installs.</span></div>
+        <button class="nbs-button nbs-button--danger">Revoke access</button>
+      </section>
+      <section class="nbs-card nbs-card--muted nbs-stack">
+        <strong>Hierarchy</strong>
+        <h2 class="nbs-heading nbs-heading--2">Operational clarity</h2>
+        <p class="nbs-muted">Static information remains stable while actionable surfaces advertise touch.</p>
+      </section>
+      <section class="nbs-inset nbs-stack" style="padding:20px">
+        <strong>Inset data well</strong>
+        <code>secret://r2/production</code>
+        <div class="row"><span class="nbs-badge">3 / 5 seats</span><span class="nbs-badge nbs-badge--success">Verified</span></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
