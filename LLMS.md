@@ -26,7 +26,8 @@ Styling hierarchy:
 1. `src/tokens.css`
 2. `src/base.css`
 3. `src/components/*.css`
-4. `src/index.css`
+4. `src/resilience.css`
+5. `src/index.css`
 
 Framework wrappers must map to existing Soft classes; do not fork or recreate the design language in React/Tailwind component-local styles.
 
@@ -35,6 +36,7 @@ Distribution:
 - React: `packages/react/src/index.js`
 - shadcn source registry: `registry.json`
 - machine manifest: `registry/manifest.json`
+- resilience contract: `RESILIENCE.md`
 
 ## Preferred classes
 
@@ -48,11 +50,27 @@ Data/time/files: `.nbs-chart-card`, `.nbs-chart-bar`, `.nbs-meter`, `.nbs-date-r
 
 Operations/commerce: `.nbs-webhook-log`, `.nbs-operation`, `.nbs-partial-failure`, `.nbs-billing-summary`, `.nbs-payment-method`, `.nbs-commerce-handoff`, `.nbs-schedule-card`, `.nbs-rollout`, `.nbs-inspector`.
 
+Resilience: `.nbs-icon--directional`, `.nbs-bidi-isolate`, `.nbs-bidi-plaintext`.
+
 ## Theme + fluid UI
 
 Use `data-theme="light"` or `data-theme="dark"` on a root ancestor.
 
 Prefer semantic variables (`--nbs-bg`, `--nbs-surface`, `--nbs-text`, `--nbs-border`, `--nbs-primary`, status colors, depth/motion tokens) and the provided `clamp()` scales. Do not hardcode theme surfaces where semantic variables exist.
+
+## Resilience rules
+
+Generated Soft UI must not assume a default desktop/light/LTR environment.
+
+- use CSS logical properties for direction-sensitive spacing and geometry
+- long translated labels and user-generated identifiers must wrap without creating viewport overflow
+- do not mirror universal icons; mirror only genuinely directional icons via `.nbs-icon--directional`
+- mixed-script identifiers may use `.nbs-bidi-isolate` or `.nbs-bidi-plaintext`
+- do not disable forced-colors globally to preserve brand colors
+- high-contrast state must survive when shadows and pastel fills are removed
+- reusable composite widgets require their complete keyboard model, not merely tabbable descendants
+
+React `Tabs` and the `soft-tabs` registry item provide the v0.6 reference behavior: Home/End, horizontal arrows, vertical arrows, and RTL-aware horizontal navigation.
 
 ## Workflow rules
 
@@ -98,6 +116,8 @@ Expose purchased, assigned, available, pending, and renewal consequences before 
 - full keyboard operation for implemented behavior
 - no hover-only information
 - respect `prefers-reduced-motion`
+- respect forced-colors/high-contrast modes
+- tolerate RTL and long localization strings
 - state cannot rely on color alone
 - touch targets remain usable
 - charts expose exact values to keyboard users
@@ -113,6 +133,8 @@ Before calling a generated Soft component complete:
 - use real Soft tokens/classes
 - verify light and dark
 - verify narrow layout/container behavior
+- verify RTL if geometry or directional icons are involved
+- verify long localized copy does not overflow
 - verify keyboard and touch semantics
 - preserve tactile meaning
 - avoid `transition: all`
@@ -120,7 +142,11 @@ Before calling a generated Soft component complete:
 - show operational truth instead of hiding exceptions
 - add/update agent-readable metadata when introducing a significant new pattern
 
-The repository runs static conformance plus Playwright/axe browser QA. Do not weaken tests to make new UI pass; fix the UI unless the test is demonstrably incorrect.
+The repository runs static conformance, source-size budgets, Playwright/axe browser QA, forced-colors/RTL resilience checks, a blocking visual reference plate, and full-page review captures. Do not weaken tests to make new UI pass; fix the UI unless the test is demonstrably incorrect.
+
+## Visual baseline policy
+
+Do not update a visual regression baseline simply because CI failed. Determine whether the change is intentional, rendering noise, or accidental drift. Intentional changes require visual review before baseline replacement.
 
 ## Flavor boundary
 
