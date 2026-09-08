@@ -4,6 +4,10 @@ const storedTheme = localStorage.getItem('nbs-theme');
 root.dataset.theme = storedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 updateThemeLabel();
 
+// Normalize semantics for progressively enhanced demo widgets before QA scans run.
+document.querySelector('#commandResults')?.setAttribute('aria-label', 'NeoLicenser destinations');
+document.querySelector('.v07-chart[role="img"]')?.setAttribute('role', 'group');
+
 themeToggle?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   localStorage.setItem('nbs-theme', root.dataset.theme);
