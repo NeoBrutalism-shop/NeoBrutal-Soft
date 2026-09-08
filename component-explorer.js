@@ -4,6 +4,21 @@ const preferredTheme = localStorage.getItem('nbs-theme') || (matchMedia('(prefer
 root.dataset.theme = preferredTheme;
 updateThemeLabel();
 
+// Keep demo semantics valid even when the examples are progressively enhanced by JS.
+const demoProgress = document.querySelector('.nbs-progress[role="progressbar"]');
+demoProgress?.setAttribute('aria-label', 'Release verification progress');
+
+const dataMeter = document.querySelector('.cx-chart .cx-meter');
+if (dataMeter && !dataMeter.hasAttribute('role')) {
+  dataMeter.setAttribute('role', 'meter');
+  dataMeter.setAttribute('aria-label', 'Seat usage');
+  dataMeter.setAttribute('aria-valuemin', '0');
+  dataMeter.setAttribute('aria-valuemax', '10');
+  dataMeter.setAttribute('aria-valuenow', '8');
+}
+
+document.querySelector('.cx-bars[role="img"]')?.setAttribute('role', 'group');
+
 themeToggle?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   localStorage.setItem('nbs-theme', root.dataset.theme);
