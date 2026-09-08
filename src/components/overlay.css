@@ -52,6 +52,11 @@
     animation: nbs-drawer-enter var(--nbs-motion-slow) var(--nbs-ease-standard);
   }
 
+  .nbs-overlay[hidden],
+  .nbs-drawer[hidden] {
+    display: none !important;
+  }
+
   .nbs-drawer__header,
   .nbs-drawer__body,
   .nbs-drawer__footer { padding: var(--nbs-space-5); }
@@ -88,7 +93,7 @@
   }
   .nbs-menu__item:hover { border-color: color-mix(in srgb, var(--nbs-border), transparent 55%); background: var(--nbs-surface-muted); }
   .nbs-menu__item:active { transform: translate(1px, 1px); }
-  .nbs-menu__item--danger { color: color-mix(in srgb, var(--nbs-danger) 70%, var(--nbs-text)); }
+  .nbs-menu__item--danger { color: color-mix(in srgb, var(--nbs-danger) 60%, var(--nbs-text)); }
   .nbs-menu__separator { height: 0; margin: .3rem; border: 0; border-top: var(--nbs-border-width) solid color-mix(in srgb, var(--nbs-border), transparent 72%); }
 
   @keyframes nbs-dialog-enter {

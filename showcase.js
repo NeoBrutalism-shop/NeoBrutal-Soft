@@ -19,6 +19,34 @@ themeToggle.addEventListener('click', () => {
   syncTheme();
 });
 
+const nav = document.querySelector('.sc-nav');
+if (nav && !nav.querySelector('a[href="./components.html"]')) {
+  const componentLink = document.createElement('a');
+  componentLink.href = './components.html';
+  componentLink.textContent = 'Components';
+  nav.insertBefore(componentLink, nav.querySelector('a[href="#workflows"]'));
+}
+const versionBadge = document.querySelector('.sc-desktop-badge');
+if (versionBadge) versionBadge.textContent = 'v0.7 · pre-1.0';
+const heroActions = document.querySelector('.sc-hero__actions');
+if (heroActions && !heroActions.querySelector('a[href="./components.html"]')) {
+  const browse = document.createElement('a');
+  browse.className = 'nbs-button nbs-button--lg';
+  browse.href = './components.html';
+  browse.textContent = 'Browse components';
+  heroActions.append(browse);
+}
+const oldLabLink = document.querySelector('.sc-final__actions a[href="./demo/v05.html"]');
+if (oldLabLink) {
+  oldLabLink.href = './components.html';
+  oldLabLink.textContent = 'Browse components';
+  const lab = document.createElement('a');
+  lab.className = 'nbs-button nbs-button--lg';
+  lab.href = './demo/v07.html';
+  lab.textContent = 'Open NeoLicenser lab';
+  oldLabLink.after(lab);
+}
+
 const depthRange = document.querySelector('#depthRange');
 const physicsStage = document.querySelector('#physicsStage');
 const depthValue = document.querySelector('#depthValue');
@@ -113,7 +141,7 @@ const views = {
     listTitle: 'Release pipeline',
     rows: [
       ['green', 'ImageForge 2.8.0', 'Signed · SHA-256 verified', 'success', '25%'],
-      ['purple', 'Soft 0.5.0', 'Registry + React package', 'info', 'Preview'],
+      ['purple', 'Soft 0.7.0', 'Component explorer + NeoLicenser lab', 'info', 'Preview'],
       ['yellow', 'Rivet 1.4.2', 'Waiting for changelog', 'warning', 'Draft']
     ]
   },

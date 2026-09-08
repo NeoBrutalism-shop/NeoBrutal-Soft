@@ -1,5 +1,14 @@
 import { test, expect } from '@playwright/test';
 
+async function openV07View(page, name) {
+  const mobileNav = page.locator('#mobileNav');
+  if (await mobileNav.isVisible()) {
+    await mobileNav.click();
+    await expect(page.locator('#sidebar')).toHaveAttribute('data-open', 'true');
+  }
+  await page.getByRole('button', { name }).click();
+}
+
 test('showcase flagship interactions remain functional', async ({ page }) => {
   await page.goto('/');
 
@@ -65,4 +74,44 @@ test('tactile button hover moves into positive depth', async ({ page }, testInfo
   const matrix = await button.evaluate((node) => getComputedStyle(node).transform);
   expect(matrix).not.toBe('none');
   expect(matrix).not.toContain('-');
+});
+
+test('v0.7 component explorer is searchable and keyboard interactive', async ({ page }) => {
+  await page.goto('/components.html');
+
+  await expect(page.getByRole('heading', { name: /Every surface/ })).toBeVisible();
+  await page.locator('#componentSearch').fill('agent');
+  await expect(page.locator('#agents')).toBeVisible();
+  await expect(page.locator('#controls')).toBeHidden();
+  await page.locator('#componentSearch').fill('');
+
+  await page.getByRole('tab', { name: 'Activity' }).click();
+  await expect(page.locator('#tab-activity')).toBeVisible();
+
+  await page.locator('#dialogButton').click();
+  await expect(page.getByRole('dialog', { name: 'Create product' })).toBeVisible();
+  await page.getByRole('button', { name: 'Close dialog' }).click();
+
+  await page.keyboard.press(process.platform === 'darwin' ? 'Meta+K' : 'Control+K');
+  await expect(page.getByRole('dialog', { name: 'Component command palette' })).toBeVisible();
+  await page.keyboard.press('Escape');
+});
+
+test('v0.7 NeoLicenser lab exercises real application workflows', async ({ page }) => {
+  await page.goto('/demo/v07.html');
+
+  await openV07View(page, 'Licenses');
+  await expect(page.locator('#pageTitle')).toHaveText('Licenses');
+  await page.locator('#licenseSearch').fill('Pixel Harbor');
+  await expect(page.locator('[data-license*="pixel"]')).toBeVisible();
+  await expect(page.locator('[data-license*="apex"]')).toBeHidden();
+
+  await openV07View(page, 'Releases');
+  await page.getByRole('button', { name: 'Promote to 50%' }).click();
+  await expect(page.locator('#rolloutLabel')).toHaveText('50% of eligible installs');
+  await expect(page.locator('#rolloutProgress')).toHaveAttribute('aria-valuenow', '50');
+
+  await openV07View(page, 'Agents');
+  await page.locator('#approveAgent').click();
+  await expect(page.locator('#agentPlanStatus')).toContainText(/applied|Applying/);
 });

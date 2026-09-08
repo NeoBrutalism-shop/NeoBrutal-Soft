@@ -1,6 +1,8 @@
 @layer nbs.base {
   *, *::before, *::after { box-sizing: border-box; }
 
+  [hidden] { display: none !important; }
+
   html { background: var(--nbs-bg); color: var(--nbs-text); }
 
   body {

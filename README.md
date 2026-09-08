@@ -8,17 +8,21 @@ NeoBrutal Soft is a member of the NeoBrutalism design-system family. It preserve
 
 Ordinary interactive surfaces move **into** their depth on hover/press. They do not generically rise toward the user. Semantic lift is reserved for actions such as actually dragging an object.
 
-## Live showcase
+## Live surfaces
 
 **[Open the NeoBrutal Soft flagship →](https://neobrutalism-shop.github.io/NeoBrutal-Soft/)**
 
-The root showcase is the public product surface. It uses the actual Soft CSS source of truth and is covered by the same browser, interaction, responsive, and axe/WCAG quality gates as the engineering demos.
+**[Browse the interactive component explorer →](https://neobrutalism-shop.github.io/NeoBrutal-Soft/components.html)**
+
+**[Open the NeoLicenser v0.7 application lab →](https://neobrutalism-shop.github.io/NeoBrutal-Soft/demo/v07.html)**
+
+The public surfaces use the actual Soft CSS source of truth and are covered by the same browser, interaction, responsive, and axe/WCAG quality gates as the engineering demos.
 
 ## Status
 
-`0.6.0-dev` — refinement / release-candidate-readiness milestone.
+`0.7.0-dev` — application dogfood + public component-explorer milestone.
 
-v0.6 intentionally shifts from component-count growth to resilience, distribution quality, and regression protection.
+v0.7 turns Soft from a deep design-system implementation into something people can **learn by touching** and something we can stress-test as a real product application.
 
 ## What exists
 
@@ -49,6 +53,12 @@ v0.6 intentionally shifts from component-count growth to resilience, distributio
 - customers, organizations, team members, seats, renewal history
 - billing/payment/invoice and commerce-handoff patterns
 - timezone-aware scheduling and staged rollout controls
+
+### Public documentation surfaces
+- flagship landing page: `index.html`
+- full interactive component explorer: `components.html`
+- NeoLicenser application dogfood: `demo/v07.html`
+- older v0.4/v0.5 engineering labs retained for regression coverage
 
 ### Distribution
 - canonical CSS: `src/index.css`
@@ -85,7 +95,7 @@ The CSS layer remains the source of truth; framework wrappers must not fork the 
 
 The root `registry.json` is a source registry. `soft-base` installs the complete Soft CSS contract before UI items.
 
-v0.6 registry items:
+Current registry items:
 
 - `soft-button`
 - `soft-card`
@@ -117,7 +127,7 @@ Blocking visual reference plate:
 npm run test:visual
 ```
 
-v0.6 QA includes desktop/mobile Chromium, axe/WCAG scans, forced-colors checks, RTL + localization overflow checks, source-size budgets, blocking light/dark reference screenshots, and full-page review captures.
+QA includes desktop/mobile Chromium, axe/WCAG scans, forced-colors checks, RTL + localization overflow checks, source-size budgets, blocking light/dark reference screenshots, and full-page review captures. v0.7 adds the component explorer and NeoLicenser lab to those browser gates.
 
 See [`QUALITY.md`](./QUALITY.md), [`RESILIENCE.md`](./RESILIENCE.md), and [`COMPONENTS.md`](./COMPONENTS.md).
 
@@ -132,12 +142,21 @@ See [`QUALITY.md`](./QUALITY.md), [`RESILIENCE.md`](./RESILIENCE.md), and [`COMP
 - Agent interfaces expose reviewable changes rather than mysterious “AI did it” actions.
 - Raw secrets are never required for an agent to understand configured state.
 - LTR, light mode, and normal contrast are environments—not assumptions.
+- Public documentation should demonstrate behavior, not replace it with screenshots.
 
 ## Dogfood
 
 NeoLicenser is Soft's first real application test bench. New components are accepted because a real workflow needs them—not to inflate the component count.
 
-The public flagship is the repository root (`index.html`). The v0.5 engineering lab remains available at [`demo/v05.html`](./demo/v05.html) for deeper implementation testing.
+The v0.7 lab exercises app-shell navigation, license filtering, staged release rollout, timezone-aware scheduling, integrations, secret references, agent scopes, approvals, typed destructive confirmation, mobile navigation, and local feedback.
+
+## Hosting
+
+The current GitHub Pages origin is:
+
+`https://neobrutalism-shop.github.io/NeoBrutal-Soft/`
+
+For the commercial/public product URL, the recommended custom domain is **`soft.neobrutalism.shop`** while keeping this repository as the Pages source.
 
 ## Family spec
 
