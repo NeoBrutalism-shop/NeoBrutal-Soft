@@ -37,3 +37,12 @@ jobs:
           name: soft-browser-qa
           path: playwright-report
           retention-days: 14
+
+      - name: Upload raw browser results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: soft-browser-results
+          path: test-results
+          if-no-files-found: ignore
+          retention-days: 14
