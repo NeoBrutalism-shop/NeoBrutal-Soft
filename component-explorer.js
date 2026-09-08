@@ -19,6 +19,13 @@ if (dataMeter && !dataMeter.hasAttribute('role')) {
 
 document.querySelector('.cx-bars[role="img"]')?.setAttribute('role', 'group');
 
+const tableScroller = document.querySelector('.cx-table-wrap');
+if (tableScroller) {
+  tableScroller.tabIndex = 0;
+  tableScroller.setAttribute('role', 'region');
+  tableScroller.setAttribute('aria-label', 'Advanced table; horizontally scrollable on narrow screens');
+}
+
 themeToggle?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   localStorage.setItem('nbs-theme', root.dataset.theme);
